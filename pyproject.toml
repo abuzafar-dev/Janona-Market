@@ -1,0 +1,11 @@
+[project]
+name = "alijahon-my"
+version = "0.1.0"
+requires-python = ">=3.14"
+dependencies = [
+    "aiogram>=3.30.0",
+    "django>=6.0.7",
+    "pillow>=12.3.0",
+    "python-dotenv>=1.2.3",
+    "static>=1.1.1",
+]
