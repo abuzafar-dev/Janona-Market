@@ -3,98 +3,98 @@
     "model": "apps.region",
     "pk": 1,
     "fields": {
-      "name": "Qoraqalpog'iston Respublikasi"
+      "title": "Qoraqalpog'iston Respublikasi"
     }
   },
   {
     "model": "apps.region",
     "pk": 2,
     "fields": {
-      "name": "Xorazm viloyati"
+      "title": "Xorazm viloyati"
     }
   },
   {
     "model": "apps.region",
     "pk": 3,
     "fields": {
-      "name": "Navoiy viloyati"
+      "title": "Navoiy viloyati"
     }
   },
   {
     "model": "apps.region",
     "pk": 4,
     "fields": {
-      "name": "Buxoro viloyati"
+      "title": "Buxoro viloyati"
     }
   },
   {
     "model": "apps.region",
     "pk": 5,
     "fields": {
-      "name": "Samarqand viloyati"
+      "title": "Samarqand viloyati"
     }
   },
   {
     "model": "apps.region",
     "pk": 6,
     "fields": {
-      "name": "Qashqadaryo viloyati"
+      "title": "Qashqadaryo viloyati"
     }
   },
   {
     "model": "apps.region",
     "pk": 7,
     "fields": {
-      "name": "Surxondaryo viloyati"
+      "title": "Surxondaryo viloyati"
     }
   },
   {
     "model": "apps.region",
     "pk": 8,
     "fields": {
-      "name": "Jizzax viloyati"
+      "title": "Jizzax viloyati"
     }
   },
   {
     "model": "apps.region",
     "pk": 9,
     "fields": {
-      "name": "Sirdaryo viloyati"
+      "title": "Sirdaryo viloyati"
     }
   },
   {
     "model": "apps.region",
     "pk": 10,
     "fields": {
-      "name": "Toshkent viloyati"
+      "title": "Toshkent viloyati"
     }
   },
   {
     "model": "apps.region",
     "pk": 11,
     "fields": {
-      "name": "Namangan viloyati"
+      "title": "Namangan viloyati"
     }
   },
   {
     "model": "apps.region",
     "pk": 12,
     "fields": {
-      "name": "Farg'ona viloyati"
+      "title": "Farg'ona viloyati"
     }
   },
   {
     "model": "apps.region",
     "pk": 13,
     "fields": {
-      "name": "Andijon viloyati"
+      "title": "Andijon viloyati"
     }
   },
   {
     "model": "apps.region",
     "pk": 14,
     "fields": {
-      "name": "Toshkent shahri"
+      "title": "Toshkent shahri"
     }
   }
 ]

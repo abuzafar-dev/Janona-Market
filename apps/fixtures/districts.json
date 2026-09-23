@@ -3,7 +3,7 @@
     "model": "apps.district",
     "pk": 1,
     "fields": {
-      "name": "Amudaryo tumani",
+      "title": "Amudaryo tumani",
       "region": 1
     }
   },
@@ -11,7 +11,7 @@
     "model": "apps.district",
     "pk": 2,
     "fields": {
-      "name": "Beruniy tumani",
+      "title": "Beruniy tumani",
       "region": 1
     }
   },
@@ -19,7 +19,7 @@
     "model": "apps.district",
     "pk": 3,
     "fields": {
-      "name": "Chimboy tumani",
+      "title": "Chimboy tumani",
       "region": 1
     }
   },
@@ -27,7 +27,7 @@
     "model": "apps.district",
     "pk": 4,
     "fields": {
-      "name": "Ellikqal'a tumani",
+      "title": "Ellikqal'a tumani",
       "region": 1
     }
   },
@@ -35,7 +35,7 @@
     "model": "apps.district",
     "pk": 5,
     "fields": {
-      "name": "Kegeyli tumani",
+      "title": "Kegeyli tumani",
       "region": 1
     }
   },
@@ -43,7 +43,7 @@
     "model": "apps.district",
     "pk": 6,
     "fields": {
-      "name": "Mo'ynoq tumani",
+      "title": "Mo'ynoq tumani",
       "region": 1
     }
   },
@@ -51,7 +51,7 @@
     "model": "apps.district",
     "pk": 7,
     "fields": {
-      "name": "Nukus tumani",
+      "title": "Nukus tumani",
       "region": 1
     }
   },
@@ -59,7 +59,7 @@
     "model": "apps.district",
     "pk": 8,
     "fields": {
-      "name": "Qanliko'l tumani",
+      "title": "Qanliko'l tumani",
       "region": 1
     }
   },
@@ -67,7 +67,7 @@
     "model": "apps.district",
     "pk": 9,
     "fields": {
-      "name": "Qo'ng'irot tumani",
+      "title": "Qo'ng'irot tumani",
       "region": 1
     }
   },
@@ -75,7 +75,7 @@
     "model": "apps.district",
     "pk": 10,
     "fields": {
-      "name": "Qorao'zak tumani",
+      "title": "Qorao'zak tumani",
       "region": 1
     }
   },
@@ -83,7 +83,7 @@
     "model": "apps.district",
     "pk": 11,
     "fields": {
-      "name": "Shumanay tumani",
+      "title": "Shumanay tumani",
       "region": 1
     }
   },
@@ -91,7 +91,7 @@
     "model": "apps.district",
     "pk": 12,
     "fields": {
-      "name": "Taxtako'pir tumani",
+      "title": "Taxtako'pir tumani",
       "region": 1
     }
   },
@@ -99,7 +99,7 @@
     "model": "apps.district",
     "pk": 13,
     "fields": {
-      "name": "To'rtko'l tumani",
+      "title": "To'rtko'l tumani",
       "region": 1
     }
   },
@@ -107,7 +107,7 @@
     "model": "apps.district",
     "pk": 14,
     "fields": {
-      "name": "Xo'jayli tumani",
+      "title": "Xo'jayli tumani",
       "region": 1
     }
   },
@@ -115,7 +115,7 @@
     "model": "apps.district",
     "pk": 15,
     "fields": {
-      "name": "Taxiatosh tumani",
+      "title": "Taxiatosh tumani",
       "region": 1
     }
   },
@@ -123,7 +123,7 @@
     "model": "apps.district",
     "pk": 16,
     "fields": {
-      "name": "Bo'zatov tumani",
+      "title": "Bo'zatov tumani",
       "region": 1
     }
   },
@@ -131,7 +131,7 @@
     "model": "apps.district",
     "pk": 17,
     "fields": {
-      "name": "Bog'ot tumani",
+      "title": "Bog'ot tumani",
       "region": 2
     }
   },
@@ -139,7 +139,7 @@
     "model": "apps.district",
     "pk": 18,
     "fields": {
-      "name": "Gurlan tumani",
+      "title": "Gurlan tumani",
       "region": 2
     }
   },
@@ -147,7 +147,7 @@
     "model": "apps.district",
     "pk": 19,
     "fields": {
-      "name": "Xonqa tumani",
+      "title": "Xonqa tumani",
       "region": 2
     }
   },
@@ -155,7 +155,7 @@
     "model": "apps.district",
     "pk": 20,
     "fields": {
-      "name": "Hazorasp tumani",
+      "title": "Hazorasp tumani",
       "region": 2
     }
   },
@@ -163,7 +163,7 @@
     "model": "apps.district",
     "pk": 21,
     "fields": {
-      "name": "Xiva tumani",
+      "title": "Xiva tumani",
       "region": 2
     }
   },
@@ -171,7 +171,7 @@
     "model": "apps.district",
     "pk": 22,
     "fields": {
-      "name": "Qo'shko'pir tumani",
+      "title": "Qo'shko'pir tumani",
       "region": 2
     }
   },
@@ -179,7 +179,7 @@
     "model": "apps.district",
     "pk": 23,
     "fields": {
-      "name": "Shovot tumani",
+      "title": "Shovot tumani",
       "region": 2
     }
   },
@@ -187,7 +187,7 @@
     "model": "apps.district",
     "pk": 24,
     "fields": {
-      "name": "Urganch tumani",
+      "title": "Urganch tumani",
       "region": 2
     }
   },
@@ -195,7 +195,7 @@
     "model": "apps.district",
     "pk": 25,
     "fields": {
-      "name": "Yangiariq tumani",
+      "title": "Yangiariq tumani",
       "region": 2
     }
   },
@@ -203,7 +203,7 @@
     "model": "apps.district",
     "pk": 26,
     "fields": {
-      "name": "Yangibozor tumani",
+      "title": "Yangibozor tumani",
       "region": 2
     }
   },
@@ -211,7 +211,7 @@
     "model": "apps.district",
     "pk": 27,
     "fields": {
-      "name": "Tuproqqal'a tumani",
+      "title": "Tuproqqal'a tumani",
       "region": 2
     }
   },
@@ -219,7 +219,7 @@
     "model": "apps.district",
     "pk": 28,
     "fields": {
-      "name": "Konimex tumani",
+      "title": "Konimex tumani",
       "region": 3
     }
   },
@@ -227,7 +227,7 @@
     "model": "apps.district",
     "pk": 29,
     "fields": {
-      "name": "Qiziltepa tumani",
+      "title": "Qiziltepa tumani",
       "region": 3
     }
   },
@@ -235,7 +235,7 @@
     "model": "apps.district",
     "pk": 30,
     "fields": {
-      "name": "Xatirchi tumani",
+      "title": "Xatirchi tumani",
       "region": 3
     }
   },
@@ -243,7 +243,7 @@
     "model": "apps.district",
     "pk": 31,
     "fields": {
-      "name": "Navbahor tumani",
+      "title": "Navbahor tumani",
       "region": 3
     }
   },
@@ -251,7 +251,7 @@
     "model": "apps.district",
     "pk": 32,
     "fields": {
-      "name": "Karmana tumani",
+      "title": "Karmana tumani",
       "region": 3
     }
   },
@@ -259,7 +259,7 @@
     "model": "apps.district",
     "pk": 33,
     "fields": {
-      "name": "Nurota tumani",
+      "title": "Nurota tumani",
       "region": 3
     }
   },
@@ -267,7 +267,7 @@
     "model": "apps.district",
     "pk": 34,
     "fields": {
-      "name": "Tomdi tumani",
+      "title": "Tomdi tumani",
       "region": 3
     }
   },
@@ -275,7 +275,7 @@
     "model": "apps.district",
     "pk": 35,
     "fields": {
-      "name": "Uchquduq tumani",
+      "title": "Uchquduq tumani",
       "region": 3
     }
   },
@@ -283,7 +283,7 @@
     "model": "apps.district",
     "pk": 36,
     "fields": {
-      "name": "Olot tumani",
+      "title": "Olot tumani",
       "region": 4
     }
   },
@@ -291,7 +291,7 @@
     "model": "apps.district",
     "pk": 37,
     "fields": {
-      "name": "Buxoro tumani",
+      "title": "Buxoro tumani",
       "region": 4
     }
   },
@@ -299,7 +299,7 @@
     "model": "apps.district",
     "pk": 38,
     "fields": {
-      "name": "G'ijduvon tumani",
+      "title": "G'ijduvon tumani",
       "region": 4
     }
   },
@@ -307,7 +307,7 @@
     "model": "apps.district",
     "pk": 39,
     "fields": {
-      "name": "Jondor tumani",
+      "title": "Jondor tumani",
       "region": 4
     }
   },
@@ -315,7 +315,7 @@
     "model": "apps.district",
     "pk": 40,
     "fields": {
-      "name": "Kogon tumani",
+      "title": "Kogon tumani",
       "region": 4
     }
   },
@@ -323,7 +323,7 @@
     "model": "apps.district",
     "pk": 41,
     "fields": {
-      "name": "Qorako'l tumani",
+      "title": "Qorako'l tumani",
       "region": 4
     }
   },
@@ -331,7 +331,7 @@
     "model": "apps.district",
     "pk": 42,
     "fields": {
-      "name": "Qorovulbozor tumani",
+      "title": "Qorovulbozor tumani",
       "region": 4
     }
   },
@@ -339,7 +339,7 @@
     "model": "apps.district",
     "pk": 43,
     "fields": {
-      "name": "Peshku tumani",
+      "title": "Peshku tumani",
       "region": 4
     }
   },
@@ -347,7 +347,7 @@
     "model": "apps.district",
     "pk": 44,
     "fields": {
-      "name": "Romitan tumani",
+      "title": "Romitan tumani",
       "region": 4
     }
   },
@@ -355,7 +355,7 @@
     "model": "apps.district",
     "pk": 45,
     "fields": {
-      "name": "Shofirkon tumani",
+      "title": "Shofirkon tumani",
       "region": 4
     }
   },
@@ -363,7 +363,7 @@
     "model": "apps.district",
     "pk": 46,
     "fields": {
-      "name": "Vobkent tumani",
+      "title": "Vobkent tumani",
       "region": 4
     }
   },
@@ -371,7 +371,7 @@
     "model": "apps.district",
     "pk": 47,
     "fields": {
-      "name": "Bulung'ur tumani",
+      "title": "Bulung'ur tumani",
       "region": 5
     }
   },
@@ -379,7 +379,7 @@
     "model": "apps.district",
     "pk": 48,
     "fields": {
-      "name": "Ishtixon tumani",
+      "title": "Ishtixon tumani",
       "region": 5
     }
   },
@@ -387,7 +387,7 @@
     "model": "apps.district",
     "pk": 49,
     "fields": {
-      "name": "Jomboy tumani",
+      "title": "Jomboy tumani",
       "region": 5
     }
   },
@@ -395,7 +395,7 @@
     "model": "apps.district",
     "pk": 50,
     "fields": {
-      "name": "Kattaqo'rg'on tumani",
+      "title": "Kattaqo'rg'on tumani",
       "region": 5
     }
   },
@@ -403,7 +403,7 @@
     "model": "apps.district",
     "pk": 51,
     "fields": {
-      "name": "Qo'shrabot tumani",
+      "title": "Qo'shrabot tumani",
       "region": 5
     }
   },
@@ -411,7 +411,7 @@
     "model": "apps.district",
     "pk": 52,
     "fields": {
-      "name": "Narpay tumani",
+      "title": "Narpay tumani",
       "region": 5
     }
   },
@@ -419,7 +419,7 @@
     "model": "apps.district",
     "pk": 53,
     "fields": {
-      "name": "Nurobod tumani",
+      "title": "Nurobod tumani",
       "region": 5
     }
   },
@@ -427,7 +427,7 @@
     "model": "apps.district",
     "pk": 54,
     "fields": {
-      "name": "Oqdaryo tumani",
+      "title": "Oqdaryo tumani",
       "region": 5
     }
   },
@@ -435,7 +435,7 @@
     "model": "apps.district",
     "pk": 55,
     "fields": {
-      "name": "Paxtachi tumani",
+      "title": "Paxtachi tumani",
       "region": 5
     }
   },
@@ -443,7 +443,7 @@
     "model": "apps.district",
     "pk": 56,
     "fields": {
-      "name": "Payariq tumani",
+      "title": "Payariq tumani",
       "region": 5
     }
   },
@@ -451,7 +451,7 @@
     "model": "apps.district",
     "pk": 57,
     "fields": {
-      "name": "Pastdarg'om tumani",
+      "title": "Pastdarg'om tumani",
       "region": 5
     }
   },
@@ -459,7 +459,7 @@
     "model": "apps.district",
     "pk": 58,
     "fields": {
-      "name": "Samarqand tumani",
+      "title": "Samarqand tumani",
       "region": 5
     }
   },
@@ -467,7 +467,7 @@
     "model": "apps.district",
     "pk": 59,
     "fields": {
-      "name": "Toyloq tumani",
+      "title": "Toyloq tumani",
       "region": 5
     }
   },
@@ -475,7 +475,7 @@
     "model": "apps.district",
     "pk": 60,
     "fields": {
-      "name": "Urgut tumani",
+      "title": "Urgut tumani",
       "region": 5
     }
   },
@@ -483,7 +483,7 @@
     "model": "apps.district",
     "pk": 61,
     "fields": {
-      "name": "Chiroqchi tumani",
+      "title": "Chiroqchi tumani",
       "region": 6
     }
   },
@@ -491,7 +491,7 @@
     "model": "apps.district",
     "pk": 62,
     "fields": {
-      "name": "Dehqonobod tumani",
+      "title": "Dehqonobod tumani",
       "region": 6
     }
   },
@@ -499,7 +499,7 @@
     "model": "apps.district",
     "pk": 63,
     "fields": {
-      "name": "G'uzor tumani",
+      "title": "G'uzor tumani",
       "region": 6
     }
   },
@@ -507,7 +507,7 @@
     "model": "apps.district",
     "pk": 64,
     "fields": {
-      "name": "Qamashi tumani",
+      "title": "Qamashi tumani",
       "region": 6
     }
   },
@@ -515,7 +515,7 @@
     "model": "apps.district",
     "pk": 65,
     "fields": {
-      "name": "Qarshi tumani",
+      "title": "Qarshi tumani",
       "region": 6
     }
   },
@@ -523,7 +523,7 @@
     "model": "apps.district",
     "pk": 66,
     "fields": {
-      "name": "Koson tumani",
+      "title": "Koson tumani",
       "region": 6
     }
   },
@@ -531,7 +531,7 @@
     "model": "apps.district",
     "pk": 67,
     "fields": {
-      "name": "Kasbi tumani",
+      "title": "Kasbi tumani",
       "region": 6
     }
   },
@@ -539,7 +539,7 @@
     "model": "apps.district",
     "pk": 68,
     "fields": {
-      "name": "Kitob tumani",
+      "title": "Kitob tumani",
       "region": 6
     }
   },
@@ -547,7 +547,7 @@
     "model": "apps.district",
     "pk": 69,
     "fields": {
-      "name": "Mirishkor tumani",
+      "title": "Mirishkor tumani",
       "region": 6
     }
   },
@@ -555,7 +555,7 @@
     "model": "apps.district",
     "pk": 70,
     "fields": {
-      "name": "Muborak tumani",
+      "title": "Muborak tumani",
       "region": 6
     }
   },
@@ -563,7 +563,7 @@
     "model": "apps.district",
     "pk": 71,
     "fields": {
-      "name": "Nishon tumani",
+      "title": "Nishon tumani",
       "region": 6
     }
   },
@@ -571,7 +571,7 @@
     "model": "apps.district",
     "pk": 72,
     "fields": {
-      "name": "Shahrisabz tumani",
+      "title": "Shahrisabz tumani",
       "region": 6
     }
   },
@@ -579,7 +579,7 @@
     "model": "apps.district",
     "pk": 73,
     "fields": {
-      "name": "Yakkabog' tumani",
+      "title": "Yakkabog' tumani",
       "region": 6
     }
   },
@@ -587,7 +587,7 @@
     "model": "apps.district",
     "pk": 74,
     "fields": {
-      "name": "Angor tumani",
+      "title": "Angor tumani",
       "region": 7
     }
   },
@@ -595,7 +595,7 @@
     "model": "apps.district",
     "pk": 75,
     "fields": {
-      "name": "Bandixon tumani",
+      "title": "Bandixon tumani",
       "region": 7
     }
   },
@@ -603,7 +603,7 @@
     "model": "apps.district",
     "pk": 76,
     "fields": {
-      "name": "Boysun tumani",
+      "title": "Boysun tumani",
       "region": 7
     }
   },
@@ -611,7 +611,7 @@
     "model": "apps.district",
     "pk": 77,
     "fields": {
-      "name": "Denov tumani",
+      "title": "Denov tumani",
       "region": 7
     }
   },
@@ -619,7 +619,7 @@
     "model": "apps.district",
     "pk": 78,
     "fields": {
-      "name": "Jarqo'rg'on tumani",
+      "title": "Jarqo'rg'on tumani",
       "region": 7
     }
   },
@@ -627,7 +627,7 @@
     "model": "apps.district",
     "pk": 79,
     "fields": {
-      "name": "Qiziriq tumani",
+      "title": "Qiziriq tumani",
       "region": 7
     }
   },
@@ -635,7 +635,7 @@
     "model": "apps.district",
     "pk": 80,
     "fields": {
-      "name": "Qumqo'rg'on tumani",
+      "title": "Qumqo'rg'on tumani",
       "region": 7
     }
   },
@@ -643,7 +643,7 @@
     "model": "apps.district",
     "pk": 81,
     "fields": {
-      "name": "Muzrabot tumani",
+      "title": "Muzrabot tumani",
       "region": 7
     }
   },
@@ -651,7 +651,7 @@
     "model": "apps.district",
     "pk": 82,
     "fields": {
-      "name": "Oltinsoy tumani",
+      "title": "Oltinsoy tumani",
       "region": 7
     }
   },
@@ -659,7 +659,7 @@
     "model": "apps.district",
     "pk": 83,
     "fields": {
-      "name": "Sariosiyo tumani",
+      "title": "Sariosiyo tumani",
       "region": 7
     }
   },
@@ -667,7 +667,7 @@
     "model": "apps.district",
     "pk": 84,
     "fields": {
-      "name": "Sherobod tumani",
+      "title": "Sherobod tumani",
       "region": 7
     }
   },
@@ -675,7 +675,7 @@
     "model": "apps.district",
     "pk": 85,
     "fields": {
-      "name": "Sho'rchi tumani",
+      "title": "Sho'rchi tumani",
       "region": 7
     }
   },
@@ -683,7 +683,7 @@
     "model": "apps.district",
     "pk": 86,
     "fields": {
-      "name": "Termiz tumani",
+      "title": "Termiz tumani",
       "region": 7
     }
   },
@@ -691,7 +691,7 @@
     "model": "apps.district",
     "pk": 87,
     "fields": {
-      "name": "Uzun tumani",
+      "title": "Uzun tumani",
       "region": 7
     }
   },
@@ -699,7 +699,7 @@
     "model": "apps.district",
     "pk": 88,
     "fields": {
-      "name": "Arnasoy tumani",
+      "title": "Arnasoy tumani",
       "region": 8
     }
   },
@@ -707,7 +707,7 @@
     "model": "apps.district",
     "pk": 89,
     "fields": {
-      "name": "Baxmal tumani",
+      "title": "Baxmal tumani",
       "region": 8
     }
   },
@@ -715,7 +715,7 @@
     "model": "apps.district",
     "pk": 90,
     "fields": {
-      "name": "Do'stlik tumani",
+      "title": "Do'stlik tumani",
       "region": 8
     }
   },
@@ -723,7 +723,7 @@
     "model": "apps.district",
     "pk": 91,
     "fields": {
-      "name": "Forish tumani",
+      "title": "Forish tumani",
       "region": 8
     }
   },
@@ -731,7 +731,7 @@
     "model": "apps.district",
     "pk": 92,
     "fields": {
-      "name": "G'allaorol tumani",
+      "title": "G'allaorol tumani",
       "region": 8
     }
   },
@@ -739,7 +739,7 @@
     "model": "apps.district",
     "pk": 93,
     "fields": {
-      "name": "Sharof Rashidov tumani",
+      "title": "Sharof Rashidov tumani",
       "region": 8
     }
   },
@@ -747,7 +747,7 @@
     "model": "apps.district",
     "pk": 94,
     "fields": {
-      "name": "Mirzacho'l tumani",
+      "title": "Mirzacho'l tumani",
       "region": 8
     }
   },
@@ -755,7 +755,7 @@
     "model": "apps.district",
     "pk": 95,
     "fields": {
-      "name": "Paxtakor tumani",
+      "title": "Paxtakor tumani",
       "region": 8
     }
   },
@@ -763,7 +763,7 @@
     "model": "apps.district",
     "pk": 96,
     "fields": {
-      "name": "Yangiobod tumani",
+      "title": "Yangiobod tumani",
       "region": 8
     }
   },
@@ -771,7 +771,7 @@
     "model": "apps.district",
     "pk": 97,
     "fields": {
-      "name": "Zomin tumani",
+      "title": "Zomin tumani",
       "region": 8
     }
   },
@@ -779,7 +779,7 @@
     "model": "apps.district",
     "pk": 98,
     "fields": {
-      "name": "Zafarobod tumani",
+      "title": "Zafarobod tumani",
       "region": 8
     }
   },
@@ -787,7 +787,7 @@
     "model": "apps.district",
     "pk": 99,
     "fields": {
-      "name": "Zarbdor tumani",
+      "title": "Zarbdor tumani",
       "region": 8
     }
   },
@@ -795,7 +795,7 @@
     "model": "apps.district",
     "pk": 100,
     "fields": {
-      "name": "Oqoltin tumani",
+      "title": "Oqoltin tumani",
       "region": 9
     }
   },
@@ -803,7 +803,7 @@
     "model": "apps.district",
     "pk": 101,
     "fields": {
-      "name": "Boyovut tumani",
+      "title": "Boyovut tumani",
       "region": 9
     }
   },
@@ -811,7 +811,7 @@
     "model": "apps.district",
     "pk": 102,
     "fields": {
-      "name": "Guliston tumani",
+      "title": "Guliston tumani",
       "region": 9
     }
   },
@@ -819,7 +819,7 @@
     "model": "apps.district",
     "pk": 103,
     "fields": {
-      "name": "Xovos tumani",
+      "title": "Xovos tumani",
       "region": 9
     }
   },
@@ -827,7 +827,7 @@
     "model": "apps.district",
     "pk": 104,
     "fields": {
-      "name": "Mirzaobod tumani",
+      "title": "Mirzaobod tumani",
       "region": 9
     }
   },
@@ -835,7 +835,7 @@
     "model": "apps.district",
     "pk": 105,
     "fields": {
-      "name": "Sardoba tumani",
+      "title": "Sardoba tumani",
       "region": 9
     }
   },
@@ -843,7 +843,7 @@
     "model": "apps.district",
     "pk": 106,
     "fields": {
-      "name": "Sayxunobod tumani",
+      "title": "Sayxunobod tumani",
       "region": 9
     }
   },
@@ -851,7 +851,7 @@
     "model": "apps.district",
     "pk": 107,
     "fields": {
-      "name": "Sirdaryo tumani",
+      "title": "Sirdaryo tumani",
       "region": 9
     }
   },
@@ -859,7 +859,7 @@
     "model": "apps.district",
     "pk": 108,
     "fields": {
-      "name": "Bekobod tumani",
+      "title": "Bekobod tumani",
       "region": 10
     }
   },
@@ -867,7 +867,7 @@
     "model": "apps.district",
     "pk": 109,
     "fields": {
-      "name": "Bo'stonliq tumani",
+      "title": "Bo'stonliq tumani",
       "region": 10
     }
   },
@@ -875,7 +875,7 @@
     "model": "apps.district",
     "pk": 110,
     "fields": {
-      "name": "Bo'ka tumani",
+      "title": "Bo'ka tumani",
       "region": 10
     }
   },
@@ -883,7 +883,7 @@
     "model": "apps.district",
     "pk": 111,
     "fields": {
-      "name": "Chinoz tumani",
+      "title": "Chinoz tumani",
       "region": 10
     }
   },
@@ -891,7 +891,7 @@
     "model": "apps.district",
     "pk": 112,
     "fields": {
-      "name": "Qibray tumani",
+      "title": "Qibray tumani",
       "region": 10
     }
   },
@@ -899,7 +899,7 @@
     "model": "apps.district",
     "pk": 113,
     "fields": {
-      "name": "Ohangaron tumani",
+      "title": "Ohangaron tumani",
       "region": 10
     }
   },
@@ -907,7 +907,7 @@
     "model": "apps.district",
     "pk": 114,
     "fields": {
-      "name": "Oqqo'rg'on tumani",
+      "title": "Oqqo'rg'on tumani",
       "region": 10
     }
   },
@@ -915,7 +915,7 @@
     "model": "apps.district",
     "pk": 115,
     "fields": {
-      "name": "Parkent tumani",
+      "title": "Parkent tumani",
       "region": 10
     }
   },
@@ -923,7 +923,7 @@
     "model": "apps.district",
     "pk": 116,
     "fields": {
-      "name": "Piskent tumani",
+      "title": "Piskent tumani",
       "region": 10
     }
   },
@@ -931,7 +931,7 @@
     "model": "apps.district",
     "pk": 117,
     "fields": {
-      "name": "Quyichirchiq tumani",
+      "title": "Quyichirchiq tumani",
       "region": 10
     }
   },
@@ -939,7 +939,7 @@
     "model": "apps.district",
     "pk": 118,
     "fields": {
-      "name": "Zangiota tumani",
+      "title": "Zangiota tumani",
       "region": 10
     }
   },
@@ -947,7 +947,7 @@
     "model": "apps.district",
     "pk": 119,
     "fields": {
-      "name": "O'rtachirchiq tumani",
+      "title": "O'rtachirchiq tumani",
       "region": 10
     }
   },
@@ -955,7 +955,7 @@
     "model": "apps.district",
     "pk": 120,
     "fields": {
-      "name": "Yangiyo'l tumani",
+      "title": "Yangiyo'l tumani",
       "region": 10
     }
   },
@@ -963,7 +963,7 @@
     "model": "apps.district",
     "pk": 121,
     "fields": {
-      "name": "Yuqorichirchiq tumani",
+      "title": "Yuqorichirchiq tumani",
       "region": 10
     }
   },
@@ -971,7 +971,7 @@
     "model": "apps.district",
     "pk": 122,
     "fields": {
-      "name": "Toshkent tumani",
+      "title": "Toshkent tumani",
       "region": 10
     }
   },
@@ -979,7 +979,7 @@
     "model": "apps.district",
     "pk": 123,
     "fields": {
-      "name": "Chortoq tumani",
+      "title": "Chortoq tumani",
       "region": 11
     }
   },
@@ -987,7 +987,7 @@
     "model": "apps.district",
     "pk": 124,
     "fields": {
-      "name": "Chust tumani",
+      "title": "Chust tumani",
       "region": 11
     }
   },
@@ -995,7 +995,7 @@
     "model": "apps.district",
     "pk": 125,
     "fields": {
-      "name": "Kosonsoy tumani",
+      "title": "Kosonsoy tumani",
       "region": 11
     }
   },
@@ -1003,7 +1003,7 @@
     "model": "apps.district",
     "pk": 126,
     "fields": {
-      "name": "Mingbuloq tumani",
+      "title": "Mingbuloq tumani",
       "region": 11
     }
   },
@@ -1011,7 +1011,7 @@
     "model": "apps.district",
     "pk": 127,
     "fields": {
-      "name": "Namangan tumani",
+      "title": "Namangan tumani",
       "region": 11
     }
   },
@@ -1019,7 +1019,7 @@
     "model": "apps.district",
     "pk": 128,
     "fields": {
-      "name": "Norin tumani",
+      "title": "Norin tumani",
       "region": 11
     }
   },
@@ -1027,7 +1027,7 @@
     "model": "apps.district",
     "pk": 129,
     "fields": {
-      "name": "Pop tumani",
+      "title": "Pop tumani",
       "region": 11
     }
   },
@@ -1035,7 +1035,7 @@
     "model": "apps.district",
     "pk": 130,
     "fields": {
-      "name": "To'raqo'rg'on tumani",
+      "title": "To'raqo'rg'on tumani",
       "region": 11
     }
   },
@@ -1043,7 +1043,7 @@
     "model": "apps.district",
     "pk": 131,
     "fields": {
-      "name": "Uchqo'rg'on tumani",
+      "title": "Uchqo'rg'on tumani",
       "region": 11
     }
   },
@@ -1051,7 +1051,7 @@
     "model": "apps.district",
     "pk": 132,
     "fields": {
-      "name": "Uychi tumani",
+      "title": "Uychi tumani",
       "region": 11
     }
   },
@@ -1059,7 +1059,7 @@
     "model": "apps.district",
     "pk": 133,
     "fields": {
-      "name": "Yangiqo'rg'on tumani",
+      "title": "Yangiqo'rg'on tumani",
       "region": 11
     }
   },
@@ -1067,7 +1067,7 @@
     "model": "apps.district",
     "pk": 134,
     "fields": {
-      "name": "Oltiariq tumani",
+      "title": "Oltiariq tumani",
       "region": 12
     }
   },
@@ -1075,7 +1075,7 @@
     "model": "apps.district",
     "pk": 135,
     "fields": {
-      "name": "Bag'dod tumani",
+      "title": "Bag'dod tumani",
       "region": 12
     }
   },
@@ -1083,7 +1083,7 @@
     "model": "apps.district",
     "pk": 136,
     "fields": {
-      "name": "Beshariq tumani",
+      "title": "Beshariq tumani",
       "region": 12
     }
   },
@@ -1091,7 +1091,7 @@
     "model": "apps.district",
     "pk": 137,
     "fields": {
-      "name": "Buvayda tumani",
+      "title": "Buvayda tumani",
       "region": 12
     }
   },
@@ -1099,7 +1099,7 @@
     "model": "apps.district",
     "pk": 138,
     "fields": {
-      "name": "Dang'ara tumani",
+      "title": "Dang'ara tumani",
       "region": 12
     }
   },
@@ -1107,7 +1107,7 @@
     "model": "apps.district",
     "pk": 139,
     "fields": {
-      "name": "Farg'ona tumani",
+      "title": "Farg'ona tumani",
       "region": 12
     }
   },
@@ -1115,7 +1115,7 @@
     "model": "apps.district",
     "pk": 140,
     "fields": {
-      "name": "Furqat tumani",
+      "title": "Furqat tumani",
       "region": 12
     }
   },
@@ -1123,7 +1123,7 @@
     "model": "apps.district",
     "pk": 141,
     "fields": {
-      "name": "Qo'shtepa tumani",
+      "title": "Qo'shtepa tumani",
       "region": 12
     }
   },
@@ -1131,7 +1131,7 @@
     "model": "apps.district",
     "pk": 142,
     "fields": {
-      "name": "Quva tumani",
+      "title": "Quva tumani",
       "region": 12
     }
   },
@@ -1139,7 +1139,7 @@
     "model": "apps.district",
     "pk": 143,
     "fields": {
-      "name": "Rishton tumani",
+      "title": "Rishton tumani",
       "region": 12
     }
   },
@@ -1147,7 +1147,7 @@
     "model": "apps.district",
     "pk": 144,
     "fields": {
-      "name": "So'x tumani",
+      "title": "So'x tumani",
       "region": 12
     }
   },
@@ -1155,7 +1155,7 @@
     "model": "apps.district",
     "pk": 145,
     "fields": {
-      "name": "Toshloq tumani",
+      "title": "Toshloq tumani",
       "region": 12
     }
   },
@@ -1163,7 +1163,7 @@
     "model": "apps.district",
     "pk": 146,
     "fields": {
-      "name": "Uchko'prik tumani",
+      "title": "Uchko'prik tumani",
       "region": 12
     }
   },
@@ -1171,7 +1171,7 @@
     "model": "apps.district",
     "pk": 147,
     "fields": {
-      "name": "O'zbekiston tumani",
+      "title": "O'zbekiston tumani",
       "region": 12
     }
   },
@@ -1179,7 +1179,7 @@
     "model": "apps.district",
     "pk": 148,
     "fields": {
-      "name": "Yozyovon tumani",
+      "title": "Yozyovon tumani",
       "region": 12
     }
   },
@@ -1187,7 +1187,7 @@
     "model": "apps.district",
     "pk": 149,
     "fields": {
-      "name": "Andijon tumani",
+      "title": "Andijon tumani",
       "region": 13
     }
   },
@@ -1195,7 +1195,7 @@
     "model": "apps.district",
     "pk": 150,
     "fields": {
-      "name": "Asaka tumani",
+      "title": "Asaka tumani",
       "region": 13
     }
   },
@@ -1203,7 +1203,7 @@
     "model": "apps.district",
     "pk": 151,
     "fields": {
-      "name": "Baliqchi tumani",
+      "title": "Baliqchi tumani",
       "region": 13
     }
   },
@@ -1211,7 +1211,7 @@
     "model": "apps.district",
     "pk": 152,
     "fields": {
-      "name": "Bo'ston tumani",
+      "title": "Bo'ston tumani",
       "region": 13
     }
   },
@@ -1219,7 +1219,7 @@
     "model": "apps.district",
     "pk": 153,
     "fields": {
-      "name": "Buloqboshi tumani",
+      "title": "Buloqboshi tumani",
       "region": 13
     }
   },
@@ -1227,7 +1227,7 @@
     "model": "apps.district",
     "pk": 154,
     "fields": {
-      "name": "Izboskan tumani",
+      "title": "Izboskan tumani",
       "region": 13
     }
   },
@@ -1235,7 +1235,7 @@
     "model": "apps.district",
     "pk": 155,
     "fields": {
-      "name": "Jalaquduq tumani",
+      "title": "Jalaquduq tumani",
       "region": 13
     }
   },
@@ -1243,7 +1243,7 @@
     "model": "apps.district",
     "pk": 156,
     "fields": {
-      "name": "Xo'jaobod tumani",
+      "title": "Xo'jaobod tumani",
       "region": 13
     }
   },
@@ -1251,7 +1251,7 @@
     "model": "apps.district",
     "pk": 157,
     "fields": {
-      "name": "Qo'rg'ontepa tumani",
+      "title": "Qo'rg'ontepa tumani",
       "region": 13
     }
   },
@@ -1259,7 +1259,7 @@
     "model": "apps.district",
     "pk": 158,
     "fields": {
-      "name": "Marhamat tumani",
+      "title": "Marhamat tumani",
       "region": 13
     }
   },
@@ -1267,7 +1267,7 @@
     "model": "apps.district",
     "pk": 159,
     "fields": {
-      "name": "Oltinko'l tumani",
+      "title": "Oltinko'l tumani",
       "region": 13
     }
   },
@@ -1275,7 +1275,7 @@
     "model": "apps.district",
     "pk": 160,
     "fields": {
-      "name": "Paxtaobod tumani",
+      "title": "Paxtaobod tumani",
       "region": 13
     }
   },
@@ -1283,7 +1283,7 @@
     "model": "apps.district",
     "pk": 161,
     "fields": {
-      "name": "Shahrixon tumani",
+      "title": "Shahrixon tumani",
       "region": 13
     }
   },
@@ -1291,7 +1291,7 @@
     "model": "apps.district",
     "pk": 162,
     "fields": {
-      "name": "Ulug'nor tumani",
+      "title": "Ulug'nor tumani",
       "region": 13
     }
   },
@@ -1299,7 +1299,7 @@
     "model": "apps.district",
     "pk": 163,
     "fields": {
-      "name": "Bektemir tumani",
+      "title": "Bektemir tumani",
       "region": 14
     }
   },
@@ -1307,7 +1307,7 @@
     "model": "apps.district",
     "pk": 164,
     "fields": {
-      "name": "Chilonzor tumani",
+      "title": "Chilonzor tumani",
       "region": 14
     }
   },
@@ -1315,7 +1315,7 @@
     "model": "apps.district",
     "pk": 165,
     "fields": {
-      "name": "Yashnobod tumani",
+      "title": "Yashnobod tumani",
       "region": 14
     }
   },
@@ -1323,7 +1323,7 @@
     "model": "apps.district",
     "pk": 166,
     "fields": {
-      "name": "Mirobod tumani",
+      "title": "Mirobod tumani",
       "region": 14
     }
   },
@@ -1331,7 +1331,7 @@
     "model": "apps.district",
     "pk": 167,
     "fields": {
-      "name": "Mirzo Ulug'bek tumani",
+      "title": "Mirzo Ulug'bek tumani",
       "region": 14
     }
   },
@@ -1339,7 +1339,7 @@
     "model": "apps.district",
     "pk": 168,
     "fields": {
-      "name": "Sergeli tumani",
+      "title": "Sergeli tumani",
       "region": 14
     }
   },
@@ -1347,7 +1347,7 @@
     "model": "apps.district",
     "pk": 169,
     "fields": {
-      "name": "Shayxontohur tumani",
+      "title": "Shayxontohur tumani",
       "region": 14
     }
   },
@@ -1355,7 +1355,7 @@
     "model": "apps.district",
     "pk": 170,
     "fields": {
-      "name": "Olmazor tumani",
+      "title": "Olmazor tumani",
       "region": 14
     }
   },
@@ -1363,7 +1363,7 @@
     "model": "apps.district",
     "pk": 171,
     "fields": {
-      "name": "Uchtepa tumani",
+      "title": "Uchtepa tumani",
       "region": 14
     }
   },
@@ -1371,7 +1371,7 @@
     "model": "apps.district",
     "pk": 172,
     "fields": {
-      "name": "Yakkasaroy tumani",
+      "title": "Yakkasaroy tumani",
       "region": 14
     }
   },
@@ -1379,7 +1379,7 @@
     "model": "apps.district",
     "pk": 173,
     "fields": {
-      "name": "Yunusobod tumani",
+      "title": "Yunusobod tumani",
       "region": 14
     }
   },
@@ -1387,7 +1387,7 @@
     "model": "apps.district",
     "pk": 174,
     "fields": {
-      "name": "Yangihayot tumani",
+      "title": "Yangihayot tumani",
       "region": 14
     }
   }
