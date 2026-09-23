@@ -1,4 +1,5 @@
 {% extends 'base/base.html' %}
+{% load order_extras %}
 
 {% block body %}
     <style>
@@ -321,7 +322,7 @@
                                                 </a>
                                             </h6>
                                             <p class="product-price">
-                                                {{ product.price }} so'm
+                                                {{ product.price|space_number }} so'm
                                             </p>
                                         </div>
                                     </div>

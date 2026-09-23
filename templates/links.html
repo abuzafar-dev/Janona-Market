@@ -1,4 +1,5 @@
 {% extends 'base/base.html' %}
+{% load order_extras %}
 
 {% block body %}
     <style>
@@ -262,7 +263,7 @@
                                     </h5>
 
                                     <span class="link-benefit">{% if link.discount_price %}-
-                                        {{ link.discount_price }}{% endif %}</span>
+                                        {{ link.discount_price|space_number }}{% endif %}</span>
 
                                     <button class="delete-btn" onclick="deleteStream({{ link.id }})">
                                         <i class="icofont-trash"></i>
@@ -271,7 +272,7 @@
 
                                 <div class="links-body">
                                     <div class="link-input-group">
-                                        <input type="text" value="https://alijahon.uz/oqim/{{ link.id }}" readonly=""
+                                        <input type="text" value="https://janonamarket.uz/oqim/{{ link.id }}" readonly=""
                                                class="link-input ref-link-{{ link.id }}">
                                     </div>
 
@@ -284,7 +285,7 @@
                                             <i class="icofont-external-link"></i>
                                             <span>Ko'rish</span>
                                         </a>
-                                        <a href="https://t.me/AlijahonBot?start=order_{{ link.id }}" target="_blank"
+                                        <a href="https://t.me/JanonaMarketBot?start=order_{{ link.id }}" target="_blank"
                                            class="action-btn telegram">
                                             <i class="icofont-telegram"></i>
                                             <span>Telegram</span>

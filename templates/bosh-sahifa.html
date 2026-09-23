@@ -1,4 +1,5 @@
 {% extends 'base/base.html' %}
+{% load order_extras %}
 {% load static %}
 <style>
     .category-card {
@@ -145,7 +146,7 @@
                                         {{ product.title }}
                                     </a>
                                 </h6>
-                                <p class="product-price">{{ product.price }} so'm</p>
+                                <p class="product-price">{{ product.price|space_number }} so'm</p>
                             </div>
                         </div>
                     </div>

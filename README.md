@@ -1,4 +1,4 @@
-# Alijahon.uz
+# Janona Market
 
 O'zbekiston bo'ylab yetkazib berish xizmatiga ega, hamkorlik (affiliate) marketingiga
 asoslangan onlayn-do'kon platformasi. Django ustida qurilgan to'liq stack ilova:

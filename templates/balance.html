@@ -1,4 +1,5 @@
 {% extends 'base/base.html' %}
+{% load order_extras %}
 {% load static %}
 
 
@@ -239,7 +240,7 @@
                         <div class="balance-card">
                             <i class="icofont-wallet balance-icon"></i>
                             <h5>Mening Hisobim</h5>
-                            <div class="balance-amount">{{ balance|floatformat:0 }} so'm</div>
+                            <div class="balance-amount">{{ balance|space_number }} so'm</div>
                         </div>
 
 
@@ -307,7 +308,7 @@
                                 <tr>
                                     <td>{{ w.created_at|date:"d.m.Y H:i" }}</td>
                                     <td>{{ w.card_number }}</td>
-                                    <td>{{ w.amount|floatformat:0 }} so'm</td>
+                                    <td>{{ w.amount|space_number }} so'm</td>
                                     <td>{{ w.get_status_display }}</td>
                                     <td>{{ w.message|default:"—" }}</td>
                                 </tr>

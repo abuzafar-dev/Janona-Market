@@ -57,7 +57,7 @@ $(document).ready(function() {
     }
 
 	// ===========Select2============
-    $('select').select2();
+    if ($.fn.select2) $('select').select2();
 	
     // ===========Tooltip============
     $('[data-toggle="tooltip"]').tooltip();
@@ -134,6 +134,6 @@ $(document).ready(function() {
     }
 	
 	// ===========Datatabel============
-	$('.datatabel').DataTable();
+	if ($.fn.DataTable) $('.datatabel').DataTable();
 
 });

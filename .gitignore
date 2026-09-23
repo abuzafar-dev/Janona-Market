@@ -20,3 +20,4 @@ static/
 
 # OS
 .DS_Store
+backups/

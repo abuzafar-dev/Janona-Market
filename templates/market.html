@@ -1,4 +1,5 @@
 {% extends 'base/base.html' %}
+{% load order_extras %}
 {% load static %}
 
 
@@ -394,12 +395,12 @@
                                         </a>
                                     </div>
 
-                                    <div class="product-price">{{ product.price|floatformat:0 }} so'm</div>
+                                    <div class="product-price">{{ product.price|space_number }} so'm</div>
 
                                     <ul class="product-details">
                                         <li>
                                             <span>To'lov:</span>
-                                            <strong>{{ product.delivery_price|floatformat:0 }} so'm</strong>
+                                            <strong>{{ product.delivery_price|space_number }} so'm</strong>
                                         </li>
                                         <li>
                                             <span>Zaxirada:</span>

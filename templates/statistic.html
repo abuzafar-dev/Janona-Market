@@ -1,4 +1,5 @@
 {% extends 'base/base.html' %}
+{% load order_extras %}
 
 
 {% block body %}
@@ -416,7 +417,7 @@
                                         <!-- 14-ustun: Yetkazildi soni va Summasi -->
                                         <td>
                                             <div class="fw-bold">{{ fun.delivered_num }}</div>
-                                            <small>({{ fun.delivered_num }} x {{ fun.product.price }})</small>
+                                            <small>({{ fun.delivered_num }} x {{ fun.product.price|space_number }})</small>
                                         </td>
                                     </tr>
                                 {% empty %}
