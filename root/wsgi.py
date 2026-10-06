@@ -1,5 +1,5 @@
 """
-WSGI config for alijahon_my project.
+WSGI config for Marketly project.
 
 It exposes the WSGI callable as a module-level variable named ``application``.
 

@@ -12,6 +12,7 @@ __pycache__/
 db.sqlite3
 staticfiles/
 static/
+media/
 
 # IDE / tool konfiguratsiyalari
 .idea/

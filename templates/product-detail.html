@@ -23,8 +23,8 @@
 
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            background-color: #f5f5f5;
-            padding: 40px 20px;
+            background-color: var(--surface-2);
+            padding: var(--space-6) var(--space-4);
         }
 
         .container {
@@ -34,10 +34,10 @@
 
         .product-showcase-wrapper {
             position: relative;
-            border-radius: 20px;
+            border-radius: var(--radius-md);
             overflow: hidden;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-            background: white;
+            box-shadow: var(--shadow-md);
+            background: var(--surface);
         }
 
         .product-showcase-container {
@@ -61,8 +61,8 @@
         /* Left side - Text content */
         .product-info {
             flex: 1;
-            background: #2c2c2c;
-            padding: 60px;
+            background: var(--ink);
+            padding: var(--space-7);
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -71,29 +71,29 @@
 
         .product-title {
             font-size: 72px;
-            font-weight: 900;
+            font-weight: 700;
             color: white;
             text-transform: uppercase;
-            margin-bottom: 60px;
+            margin-bottom: var(--space-7);
             background: rgba(255, 255, 255, 0.1);
-            padding: 20px 30px;
-            border-radius: 15px;
+            padding: var(--space-4) var(--space-6);
+            border-radius: var(--radius-md);
             display: inline-block;
         }
 
         .product-features {
             list-style: none;
-            margin-bottom: 40px;
+            margin-bottom: var(--space-6);
         }
 
         .product-features li {
             color: white;
             font-size: 20px;
             font-weight: 500;
-            padding: 20px 0;
+            padding: var(--space-4) 0;
             border-bottom: 2px solid rgba(255, 255, 255, 0.2);
             position: relative;
-            padding-left: 20px;
+            padding-left: var(--space-4);
         }
 
         .product-features li::before {
@@ -104,18 +104,18 @@
             transform: translateY(-50%);
             width: 4px;
             height: 30px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            border-radius: 2px;
+            background: linear-gradient(135deg, var(--brand-500) 0%, var(--brand-600) 100%);
+            border-radius: var(--radius-sm);
         }
 
         /* Right side - Product image */
         .product-image-container {
             flex: 1;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, var(--brand-500) 0%, var(--brand-600) 100%);
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 40px;
+            padding: var(--space-6);
             position: relative;
             overflow: hidden;
         }
@@ -146,7 +146,7 @@
             object-fit: contain;
             position: relative;
             z-index: 2;
-            filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.3));
+            filter: drop-shadow(var(--shadow-md));
             animation: float 3s ease-in-out infinite;
         }
 
@@ -169,7 +169,7 @@
             justify-content: space-between;
             pointer-events: none;
             z-index: 10;
-            padding: 0 20px;
+            padding: 0 var(--space-4);
         }
 
         .product-nav-btn {
@@ -184,13 +184,13 @@
             justify-content: center;
             pointer-events: all;
             transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            box-shadow: var(--shadow-md);
         }
 
         .product-nav-btn:hover {
             background: white;
             transform: scale(1.1);
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+            box-shadow: var(--shadow-md);
         }
 
         .product-nav-btn:active {
@@ -200,7 +200,7 @@
         .product-nav-btn svg {
             width: 28px;
             height: 28px;
-            fill: #333;
+            fill: var(--ink-body);
         }
 
         /* Dots Navigation */
@@ -227,7 +227,7 @@
         .product-dot.active {
             background: white;
             width: 35px;
-            border-radius: 6px;
+            border-radius: var(--radius-sm);
         }
 
         .product-dot:hover {
@@ -251,7 +251,7 @@
             }
 
             .product-info {
-                padding: 40px;
+                padding: var(--space-6);
             }
 
             .product-title {
@@ -269,22 +269,22 @@
 
         @media (max-width: 768px) {
             .product-info {
-                padding: 30px;
+                padding: var(--space-6);
             }
 
             .product-title {
                 font-size: 36px;
-                margin-bottom: 30px;
+                margin-bottom: var(--space-6);
             }
 
             .product-features li {
                 font-size: 16px;
-                padding: 15px 0;
+                padding: var(--space-4) 0;
             }
 
             .product-image-container {
                 min-height: 300px;
-                padding: 30px;
+                padding: var(--space-6);
             }
         }
     </style>
@@ -313,7 +313,7 @@
                                 {% if product.image %}
                                     <div class="product-slide">
                                         <div class="product-image-container"
-                                             style="background: linear-gradient(135deg, #4a5568 0%, #2d3748 100%);">
+                                             style="background: var(--ink);">
                                             <img class="product-image"
                                                  src="{{ product.image.url }}"
                                                  alt="{{ product.title }}"
@@ -324,7 +324,7 @@
                                 {% for img in product.images.all %}
                                     <div class="product-slide">
                                         <div class="product-image-container"
-                                             style="background: linear-gradient(135deg, #4a5568 0%, #2d3748 100%);">
+                                             style="background: var(--ink);">
                                             <img class="product-image"
                                                  src="{{ img.image.url }}"
                                                  alt="{{ product.title }}"

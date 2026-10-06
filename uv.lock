@@ -108,27 +108,6 @@ wheels = [
 ]
 
 [[package]]
-name = "alijahon-my"
-version = "0.1.0"
-source = { virtual = "." }
-dependencies = [
-    { name = "aiogram" },
-    { name = "django" },
-    { name = "pillow" },
-    { name = "python-dotenv" },
-    { name = "static" },
-]
-
-[package.metadata]
-requires-dist = [
-    { name = "aiogram", specifier = ">=3.30.0" },
-    { name = "django", specifier = ">=6.0.7" },
-    { name = "pillow", specifier = ">=12.3.0" },
-    { name = "python-dotenv", specifier = ">=1.2.3" },
-    { name = "static", specifier = ">=1.1.1" },
-]
-
-[[package]]
 name = "annotated-types"
 version = "0.8.0"
 source = { registry = "https://pypi.org/simple" }
@@ -235,6 +214,27 @@ source = { registry = "https://pypi.org/simple" }
 sdist = { url = "https://files.pythonhosted.org/packages/e6/08/da7c2cc7398cc0376e8da599d6330a437c01d3eace2f2365f300e0f3f758/magic_filter-1.0.12.tar.gz", hash = "sha256:4751d0b579a5045d1dc250625c4c508c18c3def5ea6afaf3957cb4530d03f7f9", size = 11071, upload-time = "2023-10-01T12:33:19.006Z" }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/cc/75/f620449f0056eff0ec7c1b1e088f71068eb4e47a46eb54f6c065c6ad7675/magic_filter-1.0.12-py3-none-any.whl", hash = "sha256:e5929e544f310c2b1f154318db8c5cdf544dd658efa998172acd2e4ba0f6c6a6", size = 11335, upload-time = "2023-10-01T12:33:17.711Z" },
+]
+
+[[package]]
+name = "marketly"
+version = "0.1.0"
+source = { virtual = "." }
+dependencies = [
+    { name = "aiogram" },
+    { name = "django" },
+    { name = "pillow" },
+    { name = "python-dotenv" },
+    { name = "static" },
+]
+
+[package.metadata]
+requires-dist = [
+    { name = "aiogram", specifier = ">=3.30.0" },
+    { name = "django", specifier = ">=6.0.7" },
+    { name = "pillow", specifier = ">=12.3.0" },
+    { name = "python-dotenv", specifier = ">=1.2.3" },
+    { name = "static", specifier = ">=1.1.1" },
 ]
 
 [[package]]

@@ -1,5 +1,5 @@
 """
-ASGI config for alijahon_my project.
+ASGI config for Marketly project.
 
 It exposes the ASGI callable as a module-level variable named ``application``.
 

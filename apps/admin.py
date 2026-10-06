@@ -1,6 +1,7 @@
 from django.contrib import admin
 from django.contrib.admin import TabularInline, ModelAdmin
 from django.contrib.auth.admin import UserAdmin
+from django.db import transaction
 from django.utils import timezone
 
 from apps.models import User, Category, Product, ProductImage, Order, District, Region, CompetitionResult, Competition, \
@@ -98,24 +99,47 @@ class WithdrawalAdmin(admin.ModelAdmin):
     actions = ['mark_completed', 'mark_rejected']
 
     def mark_completed(self, request, queryset):
-        qs = queryset.filter(status__in=[Withdrawal.Status.PENDING, Withdrawal.Status.PROCESSING])
-        for withdrawal in qs:
-            withdrawal.user.pending_balance -= withdrawal.amount
-            withdrawal.user.save(update_fields=['pending_balance'])
-            withdrawal.status = Withdrawal.Status.COMPLETED
-            withdrawal.processed_at = timezone.now()
-            withdrawal.save()
+        processed = 0
+        for withdrawal_id in queryset.values_list('pk', flat=True):
+            with transaction.atomic():
+                # Har bir so'rovni alohida qatorlar bo'yicha qulflab qayta o'qiymiz —
+                # shu orqali bir xil so'rov ikki marta qayta ishlanmaydi (idempotentlik)
+                # va bir vaqtda bir nechta admin bosgan taqdirda ham balans buzilmaydi.
+                withdrawal = Withdrawal.objects.select_for_update().get(pk=withdrawal_id)
+                if withdrawal.status not in (Withdrawal.Status.PENDING, Withdrawal.Status.PROCESSING):
+                    continue
+
+                user = User.objects.select_for_update().get(pk=withdrawal.user_id)
+                user.pending_balance -= withdrawal.amount
+                user.save(update_fields=['pending_balance'])
+
+                withdrawal.status = Withdrawal.Status.COMPLETED
+                withdrawal.processed_at = timezone.now()
+                withdrawal.save(update_fields=['status', 'processed_at'])
+                processed += 1
+
+        self.message_user(request, f"{processed} ta so'rov 'Bajarildi' deb belgilandi.")
 
     mark_completed.short_description = "Tanlanganlarni 'Bajarildi' deb belgilash"
 
     def mark_rejected(self, request, queryset):
-        qs = queryset.filter(
-            status__in=[Withdrawal.Status.PENDING, Withdrawal.Status.PROCESSING]
-        )
-        for withdrawal in qs:
-            withdrawal.user.pending_balance -= withdrawal.amount
-            withdrawal.user.main_balance += withdrawal.amount
-            withdrawal.user.save(update_fields=['main_balance', 'pending_balance'])
-            withdrawal.status = Withdrawal.Status.REJECTED
-            withdrawal.processed_at = timezone.now()
-            withdrawal.save()
+        processed = 0
+        for withdrawal_id in queryset.values_list('pk', flat=True):
+            with transaction.atomic():
+                withdrawal = Withdrawal.objects.select_for_update().get(pk=withdrawal_id)
+                if withdrawal.status not in (Withdrawal.Status.PENDING, Withdrawal.Status.PROCESSING):
+                    continue
+
+                user = User.objects.select_for_update().get(pk=withdrawal.user_id)
+                user.pending_balance -= withdrawal.amount
+                user.main_balance += withdrawal.amount
+                user.save(update_fields=['main_balance', 'pending_balance'])
+
+                withdrawal.status = Withdrawal.Status.REJECTED
+                withdrawal.processed_at = timezone.now()
+                withdrawal.save(update_fields=['status', 'processed_at'])
+                processed += 1
+
+        self.message_user(request, f"{processed} ta so'rov rad etildi.")
+
+    mark_rejected.short_description = "Tanlanganlarni rad etish"

@@ -3,23 +3,23 @@
 
 {% block body %}
 
-    <div class="container settings-container" style="margin-top: 40px;">
+    <div class="container settings-container" style="margin-top: 32px;">
         <div class="row">
 
 
             <style>
                 .sidebar-modern {
-                    background: white;
-                    border-radius: 20px;
-                    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+                    background: var(--surface);
+                    border-radius: var(--radius-md);
+                    box-shadow: var(--shadow-md);
                     overflow: hidden;
                     position: sticky;
                     top: 20px;
                 }
 
                 .user-profile-modern {
-                    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-                    padding: 30px 20px;
+                    background: linear-gradient(135deg, var(--brand-500) 0%, var(--brand-600) 100%);
+                    padding: var(--space-6) var(--space-4);
                     text-align: center;
                     position: relative;
                 }
@@ -39,8 +39,8 @@
                     width: 100px;
                     height: 100px;
                     border-radius: 50%;
-                    border: 4px solid white;
-                    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+                    border: 4px solid var(--surface);
+                    box-shadow: var(--shadow-md);
                     object-fit: cover;
                     position: relative;
                     z-index: 1;
@@ -48,7 +48,7 @@
 
                 .user-info-modern {
                     color: white;
-                    margin-top: 15px;
+                    margin-top: var(--space-4);
                     position: relative;
                     z-index: 1;
                 }
@@ -56,17 +56,17 @@
                 .user-info-modern h6 {
                     font-size: 18px;
                     font-weight: 700;
-                    margin-bottom: 8px;
+                    margin-bottom: var(--space-2);
                 }
 
                 .user-info-modern p {
-                    font-size: 13px;
+                    font-size: 14px;
                     opacity: 0.95;
-                    margin-bottom: 4px;
+                    margin-bottom: var(--space-1);
                 }
 
                 .nav-modern {
-                    padding: 10px 0;
+                    padding: var(--space-2) 0;
                 }
 
                 .nav-modern .nav-item {
@@ -74,38 +74,38 @@
                 }
 
                 .nav-modern .nav-link {
-                    color: #64748b;
-                    padding: 14px 24px;
+                    color: var(--ink-muted);
+                    padding: var(--space-3) var(--space-5);
                     display: flex;
                     align-items: center;
                     font-weight: 500;
-                    font-size: 15px;
+                    font-size: 14px;
                     border-left: 3px solid transparent;
                     transition: all 0.3s ease;
                 }
 
                 .nav-modern .nav-link i {
                     font-size: 20px;
-                    margin-right: 12px;
+                    margin-right: var(--space-3);
                     width: 24px;
                     text-align: center;
                 }
 
                 .nav-modern .nav-link:hover,
                 .nav-modern .nav-link.active {
-                    background: linear-gradient(90deg, rgba(102, 126, 234, 0.08) 0%, transparent 100%);
-                    color: #667eea;
-                    border-left-color: #667eea;
+                    background: linear-gradient(90deg, rgba(var(--brand-500-rgb), 0.08) 0%, transparent 100%);
+                    color: var(--brand-500);
+                    border-left-color: var(--brand-500);
                 }
 
                 @media (max-width: 768px) {
                     .sidebar-modern {
-                        margin-bottom: 20px;
+                        margin-bottom: var(--space-4);
                         position: static;
                     }
 
                     .user-profile-modern {
-                        padding: 20px 15px;
+                        padding: var(--space-4) var(--space-4);
                     }
 
                     .user-avatar-modern {
@@ -122,79 +122,95 @@
                     }
 
                     .nav-modern .nav-link {
-                        padding: 12px 20px;
+                        padding: var(--space-3) var(--space-4);
                         font-size: 14px;
                     }
 
                     .nav-modern .nav-link i {
                         font-size: 18px;
-                        margin-right: 10px;
+                        margin-right: var(--space-2);
                     }
                 }
 
                 .settings-card {
-                    background: white;
-                    border-radius: 20px;
-                    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-                    padding: 30px;
+                    background: var(--surface);
+                    border-radius: var(--radius-md);
+                    box-shadow: var(--shadow-md);
+                    padding: var(--space-6);
                 }
 
                 .settings-header {
-                    margin-bottom: 25px;
-                    padding-bottom: 15px;
-                    border-bottom: 1px solid #f1f5f9;
+                    margin-bottom: var(--space-5);
+                    padding-bottom: var(--space-4);
+                    border-bottom: 1px solid var(--surface-2);
                 }
 
                 .settings-header h3 {
                     font-size: 20px;
                     font-weight: 700;
-                    color: #1e293b;
-                    margin-bottom: 4px;
+                    color: var(--ink);
+                    margin-bottom: var(--space-1);
                 }
 
                 .settings-header p {
-                    color: #64748b;
+                    color: var(--ink-muted);
                     font-size: 14px;
                     margin: 0;
                 }
 
                 .settings-card .form-group {
-                    margin-bottom: 18px;
+                    margin-bottom: var(--space-4);
                 }
 
                 .settings-card label {
                     font-weight: 600;
                     font-size: 14px;
-                    color: #334155;
-                    margin-bottom: 6px;
+                    color: var(--ink-body);
+                    margin-bottom: var(--space-2);
                     display: block;
                 }
 
                 .settings-card .form-control {
-                    border-radius: 10px;
-                    border: 1px solid #e2e8f0;
-                    padding: 10px 14px;
+                    border-radius: var(--radius-md);
+                    border: 1px solid var(--border);
+                    padding: var(--space-3) var(--space-4);
                     font-size: 14px;
                 }
 
                 .settings-card .form-control:focus {
-                    border-color: #667eea;
-                    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+                    border-color: var(--brand-500);
+                    box-shadow: 0 0 0 3px rgba(var(--brand-500-rgb), 0.1);
                 }
 
                 .btn-save {
-                    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                    background: linear-gradient(135deg, var(--brand-500) 0%, var(--brand-600) 100%);
                     color: white;
-                    border: none;
-                    border-radius: 10px;
-                    padding: 10px 24px;
+                    border: 1px solid transparent;
+                    border-radius: var(--radius-md);
+                    height: 40px;
+                    padding: 0 var(--space-5);
                     font-weight: 600;
                     font-size: 14px;
+                    display: inline-flex;
+                    align-items: center;
+                    gap: var(--space-2);
+                    cursor: pointer;
+                    transition: background-color .15s ease, border-color .15s ease, color .15s ease;
                 }
 
                 .btn-save:hover {
                     color: white;
                     opacity: 0.9;
+                }
+
+                .btn-save:focus-visible {
+                    outline: 2px solid var(--brand-500);
+                    outline-offset: 2px;
+                }
+
+                .btn-save:disabled {
+                    opacity: .6;
+                    cursor: not-allowed;
                 }
             </style>
             {% include 'base/sidebar.html' %}
@@ -236,7 +252,7 @@
                                 <div class="form-group">
                                     <label for="id_region">Viloyat</label>
                                     <select name="region" id="id_region"
-                                            class="form-control " style="padding: 10px 15px; min-height: 45px;">
+                                            class="form-control " style="padding: 8px 16px; min-height: 45px;">
                                         <option value="">Viloyatni tanlang</option>
                                         {% for region in regions %}
                                             <option value="{{ region.id }}"
@@ -254,7 +270,7 @@
                                 <div class="form-group">
                                     <label for="id_district">Tuman / Shahar</label>
                                     <select name="city" id="id_district" class="form-control"
-                                            style="padding: 10px 15px; min-height: 45px;">
+                                            style="padding: 8px 16px; min-height: 45px;">
                                         <option value="">Tumanni tanlang</option>
                                         {% for district in districts %}
                                             <option value="{{ district.title }}"

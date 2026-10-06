@@ -3,6 +3,7 @@ from os.path import join
 from pathlib import Path
 
 from django.contrib import messages
+from django.core.exceptions import ImproperlyConfigured
 from dotenv import load_dotenv
 
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -10,11 +11,28 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 load_dotenv(BASE_DIR / '.env')
 
 
-SECRET_KEY = os.environ.get('SECRET_KEY', 'django-insecure-change-me-in-.env')
+# Ishlab chiqarish (production) uchun xavfsiz standart: DEBUG faqat .env orqali
+# ochiq ravishda yoqiladi, aks holda o'chiq bo'ladi.
+DEBUG = os.environ.get('DEBUG', 'False') == 'True'
 
-DEBUG = os.environ.get('DEBUG', 'True') == 'True'
+SECRET_KEY = os.environ.get('SECRET_KEY')
+if not SECRET_KEY:
+    if DEBUG:
+        # Faqat lokal ishlab chiqish uchun — production'da hech qachon ishlatilmaydi,
+        # chunki DEBUG=False bo'lganda pastda xatolik chiqariladi.
+        SECRET_KEY = 'django-insecure-change-me-in-.env'
+    else:
+        raise ImproperlyConfigured(
+            "SECRET_KEY muhit o'zgaruvchisi berilishi shart (DEBUG=False bo'lganda). "
+            "'.env' fayliga xavfsiz, tasodifiy maxfiy kalit qo'shing."
+        )
 
-ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', '*').split(',')
+ALLOWED_HOSTS = [host.strip() for host in os.environ.get('ALLOWED_HOSTS', '').split(',') if host.strip()]
+if not DEBUG and not ALLOWED_HOSTS:
+    raise ImproperlyConfigured(
+        "ALLOWED_HOSTS muhit o'zgaruvchisi berilishi shart (DEBUG=False bo'lganda). "
+        "Joker belgi ('*') production'da ishlatilmasin."
+    )
 
 LOGIN_URL = 'home'
 
@@ -59,7 +77,6 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'root.wsgi.application'
-STATICFILES_DIRS = [('apps', BASE_DIR / 'apps'/'apps')]
 AUTH_USER_MODEL = 'apps.User'
 DATABASES = {
     'default': {
@@ -94,7 +111,8 @@ USE_I18N = True
 USE_TZ = True
 
 TELEGRAM_BOT_TOKEN = os.environ.get('TELEGRAM_BOT_TOKEN', '')
-TELEGRAM_CHANNEL_ID = os.environ.get('TELEGRAM_CHANNEL_ID', '@alijahon_my_project')
+TELEGRAM_CHANNEL_ID = os.environ.get('TELEGRAM_CHANNEL_ID', '@marketly')
+TELEGRAM_BOT_USERNAME = os.environ.get('TELEGRAM_BOT_USERNAME', 'MarketlyBot')
 
 STATIC_URL = '/static/'
 STATIC_ROOT = join(BASE_DIR/'static/')
@@ -104,4 +122,14 @@ MEDIA_ROOT = BASE_DIR / 'media'
 MESSAGE_TAGS = {
     messages.ERROR: 'danger',
 }
+
+# Production xavfsizlik sozlamalari — DEBUG=True bo'lganda o'chiq, shu bilan
+# lokal ishlab chiqish (HTTP, self-signed sertifikatsiz) buzilmaydi.
+SECURE_SSL_REDIRECT = os.environ.get('SECURE_SSL_REDIRECT', str(not DEBUG)) == 'True'
+SESSION_COOKIE_SECURE = not DEBUG
+CSRF_COOKIE_SECURE = not DEBUG
+SECURE_CONTENT_TYPE_NOSNIFF = True
+SECURE_HSTS_SECONDS = 0 if DEBUG else int(os.environ.get('SECURE_HSTS_SECONDS', 31536000))
+SECURE_HSTS_INCLUDE_SUBDOMAINS = not DEBUG
+SECURE_HSTS_PRELOAD = not DEBUG
 

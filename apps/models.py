@@ -136,6 +136,10 @@ class Funnel(Model):
     owner = ForeignKey('User', on_delete=CASCADE, related_name='owned_funnels', null=True, blank=True)
     slug = SlugField(max_length=255, unique=True, blank=True)
     discount_price = DecimalField(max_digits=12, decimal_places=0, null=True, blank=True)
+    commission = DecimalField(
+        max_digits=12, decimal_places=0, default=0,
+        help_text="Ushbu oqim orqali yetkazib berilgan har bir dona uchun sotuvchiga to'lanadigan komissiya",
+    )
     is_active = BooleanField(default=True)
     views_count = PositiveIntegerField(default=0)
     created_at = DateTimeField(auto_now_add=True)
@@ -176,6 +180,10 @@ class Order(Model):
     region = ForeignKey(Region, on_delete=SET_NULL, null=True, blank=True, related_name='+')
     district = ForeignKey(District, on_delete=SET_NULL, null=True, blank=True, related_name='+')
 
+    stock_deducted = BooleanField(default=False)
+    stock_restocked = BooleanField(default=False)
+    commission_paid = BooleanField(default=False)
+    commission_amount = DecimalField(max_digits=12, decimal_places=0, default=0)
 
     def __str__(self):
         return f"Order #{self.id} - {self.full_name}"

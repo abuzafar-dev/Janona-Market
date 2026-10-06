@@ -5,40 +5,40 @@
     <style>
         .referral-container {
             max-width: 1400px;
-            margin: 40px auto;
-            padding: 0 20px;
+            margin: var(--space-6) auto;
+            padding: 0 var(--space-4);
         }
 
         .referral-card {
             background: white;
-            border-radius: 20px;
-            padding: 32px;
-            margin-bottom: 24px;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.08);
-            border: 1px solid #f1f5f9;
+            border-radius: var(--radius-md);
+            padding: var(--space-6);
+            margin-bottom: var(--space-5);
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--border);
         }
 
         .referral-header h3 {
-            font-size: 22px;
+            font-size: 20px;
             font-weight: 700;
-            color: #1e293b;
-            margin-bottom: 8px;
+            color: var(--ink);
+            margin-bottom: var(--space-2);
         }
 
         .referral-header p {
-            color: #64748b;
+            color: var(--ink-muted);
             font-size: 14px;
-            margin-bottom: 24px;
+            margin-bottom: var(--space-5);
         }
 
         .referral-link-box {
             display: flex;
             align-items: center;
-            gap: 12px;
-            background: #f8fafc;
-            border: 1px solid #e2e8f0;
-            border-radius: 14px;
-            padding: 8px 8px 8px 20px;
+            gap: var(--space-3);
+            background: var(--surface-2);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            padding: var(--space-2) var(--space-2) var(--space-2) var(--space-4);
             flex-wrap: wrap;
         }
 
@@ -48,19 +48,19 @@
             border: none;
             background: transparent;
             font-size: 14px;
-            color: #334155;
+            color: var(--ink-body);
             outline: none;
         }
 
         .btn-copy {
             display: flex;
             align-items: center;
-            gap: 8px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            gap: var(--space-2);
+            background: linear-gradient(135deg, var(--brand-500) 0%, var(--brand-600) 100%);
             color: white;
-            border: none;
-            padding: 12px 24px;
-            border-radius: 10px;
+            border: 1px solid transparent;
+            padding: var(--space-3) var(--space-5);
+            border-radius: var(--radius-md);
             font-weight: 600;
             font-size: 14px;
             cursor: pointer;
@@ -70,20 +70,25 @@
 
         .btn-copy:hover {
             transform: translateY(-2px);
-            box-shadow: 0 8px 16px rgba(102, 126, 234, 0.35);
+            box-shadow: var(--shadow-md);
         }
 
         .btn-copy:active {
             transform: translateY(0);
         }
 
+        .btn-copy:focus-visible {
+            outline: 2px solid var(--brand-500);
+            outline-offset: 2px;
+        }
+
         .copy-feedback {
-            color: #22c55e;
-            font-size: 13px;
+            color: var(--success);
+            font-size: 12px;
             font-weight: 600;
             opacity: 0;
             transition: opacity 0.3s ease;
-            margin-left: 4px;
+            margin-left: var(--space-1);
         }
 
         .copy-feedback.show {
@@ -93,14 +98,14 @@
         .stats-pill {
             display: inline-flex;
             align-items: center;
-            gap: 8px;
-            background: rgba(102, 126, 234, 0.1);
-            color: #667eea;
+            gap: var(--space-2);
+            background: rgba(var(--brand-500-rgb), 0.1);
+            color: var(--brand-500);
             font-weight: 600;
             font-size: 14px;
-            padding: 10px 20px;
-            border-radius: 30px;
-            margin-top: 20px;
+            padding: var(--space-2) var(--space-4);
+            border-radius: var(--radius-full);
+            margin-top: var(--space-4);
         }
 
         .stats-pill i {
@@ -111,26 +116,26 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: 16px 20px;
-            border-radius: 12px;
+            padding: var(--space-4);
+            border-radius: var(--radius-md);
             transition: all 0.3s ease;
-            border: 1px solid #f1f5f9;
-            margin-bottom: 10px;
+            border: 1px solid var(--border);
+            margin-bottom: var(--space-2);
         }
 
         .referral-item:hover {
-            background: #f8fafc;
-            border-color: #e2e8f0;
+            background: var(--surface-2);
+            border-color: var(--border);
         }
 
         .referral-item span:first-child {
             font-weight: 600;
-            color: #1e293b;
+            color: var(--ink);
         }
 
         .referral-item span:last-child {
-            color: #94a3b8;
-            font-size: 13px;
+            color: var(--ink-muted);
+            font-size: 12px;
         }
 
         .empty-state {
@@ -138,15 +143,15 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            padding: 50px 20px;
-            color: #94a3b8;
+            padding: var(--space-7) var(--space-4);
+            color: var(--ink-muted);
             text-align: center;
         }
 
         .empty-state i {
             font-size: 48px;
-            margin-bottom: 16px;
-            color: #cbd5e1;
+            margin-bottom: var(--space-4);
+            color: var(--border);
         }
 
         .empty-state div {
@@ -156,18 +161,18 @@
 
         @media (max-width: 768px) {
             .referral-card {
-                padding: 20px;
-                border-radius: 16px;
+                padding: var(--space-4);
+                border-radius: var(--radius-md);
             }
 
             .referral-link-box {
                 flex-direction: column;
                 align-items: stretch;
-                padding: 16px;
+                padding: var(--space-4);
             }
 
             .referral-link-box input {
-                padding: 8px 0;
+                padding: var(--space-2) 0;
             }
 
             .btn-copy {
@@ -176,7 +181,7 @@
         }
     </style>
 
-    <div class="container market-container" style="margin-top: 40px;">
+    <div class="container market-container" style="margin-top: 32px;">
         <div class="row">
             {% include 'base/sidebar.html' %}
             <div class="col-md-9">

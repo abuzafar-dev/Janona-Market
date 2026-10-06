@@ -6,10 +6,11 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/icofont@1.0.0/dist/icofont.min.css">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Internet do'kon O'zbekiston bo'ylab bepul yetqazib berish - alijahon.uz</title>
+    <title>Marketly — Onlayn do'kon, O'zbekiston bo'ylab bepul yetkazib berish</title>
 
     <!-- Favicon Icon -->
-    <link rel="icon" type="image/png" href="{% static 'apps/alijahon.png' %}">
+    <link rel="icon" type="image/png" href="{% static 'apps/marketly_icon.png' %}">
+    <link rel="apple-touch-icon" href="{% static 'apps/marketly_icon.png' %}">
 
     <!-- Bootstrap core CSS -->
     <link href="{% static 'apps/bootstrap.min.css' %}" rel="stylesheet">
@@ -27,20 +28,6 @@
 
     <!-- Modern UI Styles -->
     <style>
-        :root {
-            --primary-color: #667eea;
-            --primary-dark: #764ba2;
-            --primary-light: #a5b4fc;
-            --success-color: #10b981;
-            --warning-color: #f59e0b;
-            --danger-color: #ef4444;
-            --info-color: #3b82f6;
-            --dark-bg: #1e293b;
-            --light-bg: #f8fafc;
-            --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-            --card-shadow-hover: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-        }
-
         * {
             transition: all 0.3s ease;
         }
@@ -49,29 +36,29 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            background: #fff;
-            padding: 20px;
-            border-radius: 16px;
+            background: var(--surface);
+            padding: var(--space-5);
+            border-radius: var(--radius-md);
             text-decoration: none;
-            color: #333;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            color: var(--ink-body);
+            box-shadow: var(--shadow-sm);
         }
 
         .category-card:hover {
             transform: translateY(-5px);
-            color: var(--primary-color);
+            color: var(--brand-500);
         }
 
         .category-image-wrapper {
             width: 80px;
             height: 80px;
             border-radius: 50%;
-            background: #f1f5f9;
+            background: var(--surface-2);
             display: flex;
             align-items: center;
             justify-content: center;
             overflow: hidden;
-            margin-bottom: 15px;
+            margin-bottom: var(--space-4);
         }
 
         .category-image {
@@ -87,10 +74,10 @@
         }
 
         .product-card {
-            background: #fff;
-            border-radius: 16px;
+            background: var(--surface);
+            border-radius: var(--radius-md);
             overflow: hidden;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            box-shadow: var(--shadow-sm);
             height: 100%;
             display: flex;
             flex-direction: column;
@@ -113,21 +100,21 @@
         }
 
         .product-info {
-            padding: 15px;
+            padding: var(--space-4);
         }
 
         .product-title a {
             text-decoration: none;
-            color: #1e293b;
+            color: var(--ink);
             font-size: 16px;
             font-weight: 600;
         }
 
         .product-price {
-            color: var(--primary-color);
+            color: var(--brand-500);
             font-weight: 700;
             font-size: 18px;
-            margin-top: 10px;
+            margin-top: var(--space-3);
             margin-bottom: 0;
         }
 
@@ -137,7 +124,7 @@
 
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-            background: #f8fafc;
+            background: var(--surface-2);
             min-height: 100vh;
         }
 
@@ -147,63 +134,116 @@
 
         .card {
             border: none;
-            border-radius: 16px;
-            box-shadow: var(--card-shadow);
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-sm);
             overflow: hidden;
         }
 
         .card:hover {
-            box-shadow: var(--card-shadow-hover);
+            box-shadow: var(--shadow-md);
             transform: translateY(-4px);
         }
 
         .btn {
-            border-radius: 12px;
-            padding: 10px 24px;
+            border-radius: var(--radius-md);
+            padding: 10px var(--space-5);
             font-weight: 600;
-            border: none;
+            border: 1px solid transparent;
+            transition: background-color .15s ease, border-color .15s ease, color .15s ease;
+        }
+
+        .btn:focus-visible {
+            outline: 2px solid var(--brand-500);
+            outline-offset: 2px;
+        }
+
+        .btn:disabled {
+            opacity: .6;
+            cursor: not-allowed;
+            transform: none !important;
+            box-shadow: none !important;
         }
 
         .btn-primary {
-            background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
+            background: linear-gradient(135deg, var(--brand-500) 0%, var(--brand-600) 100%);
             color: white;
         }
 
         .btn-primary:hover {
             transform: translateY(-2px);
-            box-shadow: 0 10px 15px -3px rgba(79, 70, 229, 0.4);
+            box-shadow: var(--shadow-md);
+        }
+
+        .btn-primary:active {
+            transform: translateY(0);
+            box-shadow: none;
+        }
+
+        .btn-secondary {
+            background: transparent;
+            border-color: var(--brand-500);
+            color: var(--brand-500);
+        }
+
+        .btn-secondary:hover {
+            background: var(--brand-50);
+        }
+
+        .btn-secondary:active {
+            background: var(--brand-50);
+            border-color: var(--brand-600);
+            color: var(--brand-600);
+        }
+
+        .btn-ghost {
+            background: transparent;
+            color: var(--ink-muted);
+        }
+
+        .btn-ghost:hover {
+            background: var(--brand-50);
+            color: var(--brand-500);
+        }
+
+        .btn-danger {
+            background: var(--danger);
+            color: white;
+        }
+
+        .btn-danger:hover {
+            filter: brightness(0.9);
         }
 
         .form-control, .form-select {
-            border-radius: 12px;
-            border: 2px solid #e2e8f0;
-            padding: 12px 16px;
+            border-radius: var(--radius-md);
+            border: 2px solid var(--border);
+            padding: var(--space-3) var(--space-4);
         }
 
         .form-control:focus, .form-select:focus {
-            border-color: var(--primary-color);
-            box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+            border-color: var(--brand-500);
+            box-shadow: 0 0 0 3px rgba(var(--brand-500-rgb), 0.1);
         }
 
         .badge {
-            padding: 6px 14px;
-            border-radius: 20px;
+            padding: var(--space-2) 14px;
+            border-radius: var(--radius-full);
             font-weight: 600;
         }
 
         .table {
-            border-radius: 12px;
+            border-radius: var(--radius-md);
             overflow: hidden;
         }
 
         .table thead {
-            background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
+            background: linear-gradient(135deg, var(--brand-500) 0%, var(--brand-600) 100%);
             color: white;
         }
 
         .modern-header {
-            background: white;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            background: var(--surface);
+            box-shadow: var(--shadow-sm);
             position: sticky;
             top: 0;
             z-index: 1000;
@@ -218,7 +258,7 @@
         }
 
         .navbar-brand-modern img {
-            height: 45px;
+            height: 40px;
             width: auto;
         }
 
@@ -227,9 +267,9 @@
         }
 
         .nav-link-modern {
-            padding: 20px 16px !important;
+            padding: var(--space-4) var(--space-4) !important;
             font-weight: 600;
-            color: #475569 !important;
+            color: var(--ink-muted) !important;
             position: relative;
         }
 
@@ -249,13 +289,13 @@
             transform: translateX(-50%);
             width: 0;
             height: 3px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, var(--brand-500) 0%, var(--brand-600) 100%);
             transition: width 0.3s ease;
         }
 
         .nav-link-modern:hover,
         .nav-link-modern.active {
-            color: #667eea !important;
+            color: var(--brand-500) !important;
         }
 
         .nav-link-modern:hover::after {
@@ -270,14 +310,14 @@
 
         .search-box-header input {
             width: 100%;
-            padding: 10px 45px 10px 20px;
-            border: 2px solid #e2e8f0;
-            border-radius: 30px;
+            padding: var(--space-3) 45px var(--space-3) var(--space-4);
+            border: 2px solid var(--border);
+            border-radius: var(--radius-full);
         }
 
         .search-box-header input:focus {
-            border-color: #667eea;
-            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+            border-color: var(--brand-500);
+            box-shadow: 0 0 0 3px rgba(var(--brand-500-rgb), 0.1);
             outline: none;
         }
 
@@ -286,7 +326,7 @@
             right: 5px;
             top: 50%;
             transform: translateY(-50%);
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, var(--brand-500) 0%, var(--brand-600) 100%);
             border: none;
             color: white;
             width: 38px;
@@ -298,50 +338,50 @@
         }
 
         .profile-dropdown-modern {
-            border-radius: 16px !important;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15) !important;
+            border-radius: var(--radius-md) !important;
+            box-shadow: var(--shadow-md) !important;
             border: none !important;
-            padding: 8px 0;
-            margin-top: 10px;
+            padding: var(--space-2) 0;
+            margin-top: var(--space-3);
             min-width: 250px;
             right: 0 !important;
             left: auto !important;
         }
 
         .dropdown-item-modern {
-            padding: 12px 24px;
+            padding: var(--space-3) var(--space-5);
             font-weight: 500;
-            color: #475569;
+            color: var(--ink-muted);
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: var(--space-3);
         }
 
         .dropdown-item-modern i {
             width: 20px;
             font-size: 18px;
-            color: #667eea;
+            color: var(--brand-500);
         }
 
         .dropdown-item-modern:hover {
-            background: linear-gradient(90deg, rgba(102, 126, 234, 0.08) 0%, transparent 100%);
-            color: #667eea;
+            background: linear-gradient(90deg, rgba(var(--brand-500-rgb), 0.08) 0%, transparent 100%);
+            color: var(--brand-500);
         }
 
         .profile-pic-modern {
             width: 35px;
             height: 35px;
             border-radius: 50%;
-            border: 2px solid #667eea;
+            border: 2px solid var(--brand-500);
             object-fit: cover;
         }
 
         .mega-dropdown-modern {
-            border-radius: 16px !important;
+            border-radius: var(--radius-md) !important;
             border: none !important;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15) !important;
-            padding: 30px 20px !important;
-            margin-top: 10px !important;
+            box-shadow: var(--shadow-md) !important;
+            padding: var(--space-6) var(--space-4) !important;
+            margin-top: var(--space-3) !important;
             width: 90% !important;
             max-width: 1200px !important;
             left: 5% !important;
@@ -351,22 +391,22 @@
         .mega-list-modern {
             display: flex;
             flex-direction: column;
-            gap: 6px;
+            gap: var(--space-2);
         }
 
         .mega-list-modern a {
-            padding: 8px 12px;
-            color: #475569;
+            padding: var(--space-2) var(--space-3);
+            color: var(--ink-muted);
             text-decoration: none;
-            border-radius: 8px;
+            border-radius: var(--radius-sm);
             font-size: 13px;
             white-space: nowrap;
             display: block;
         }
 
         .mega-list-modern a:hover {
-            background: linear-gradient(90deg, rgba(102, 126, 234, 0.08) 0%, transparent 100%);
-            color: #667eea;
+            background: linear-gradient(90deg, rgba(var(--brand-500-rgb), 0.08) 0%, transparent 100%);
+            color: var(--brand-500);
             transform: translateX(4px);
         }
 
@@ -375,21 +415,21 @@
         }
 
         .navbar-toggler-modern {
-            border: 2px solid #667eea;
-            padding: 8px 12px;
-            border-radius: 8px;
+            border: 2px solid var(--brand-500);
+            padding: var(--space-2) var(--space-3);
+            border-radius: var(--radius-sm);
         }
 
         .modern-footer {
-            background: white;
-            border-top: 1px solid #e2e8f0;
+            background: var(--surface);
+            border-top: 1px solid var(--border);
             padding: 0;
             margin-top: 60px;
         }
 
         .footer-copyright {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            padding: 24px 0;
+            background: linear-gradient(135deg, var(--brand-500) 0%, var(--brand-600) 100%);
+            padding: var(--space-5) 0;
             color: white;
         }
 
@@ -404,12 +444,26 @@
         .copyright-text {
             margin: 0;
             font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: var(--space-2);
+            flex-wrap: wrap;
         }
 
         .copyright-text a {
             color: white;
             font-weight: 700;
             text-decoration: none;
+        }
+
+        .footer-logo-link {
+            display: inline-flex;
+            align-items: center;
+        }
+
+        .footer-logo {
+            height: 28px;
+            width: auto;
         }
 
         .footer-links {
@@ -454,16 +508,16 @@
 
         @media (max-width: 768px) {
             .container {
-                padding: 10px;
+                padding: var(--space-2);
             }
 
             .card {
-                margin-bottom: 20px;
+                margin-bottom: var(--space-4);
             }
 
             .btn {
                 width: 100%;
-                margin-bottom: 10px;
+                margin-bottom: var(--space-2);
             }
 
             .table {
@@ -471,11 +525,11 @@
             }
 
             .modern-footer {
-                margin-top: 40px;
+                margin-top: var(--space-6);
             }
 
             .footer-copyright {
-                padding: 20px 0;
+                padding: var(--space-4) 0;
             }
 
             .copyright-content {
@@ -495,18 +549,18 @@
             z-index: 9999;
             display: flex;
             flex-direction: column;
-            gap: 10px;
+            gap: var(--space-2);
         }
 
         .app-toast {
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: var(--space-3);
             min-width: 280px;
             max-width: 380px;
-            padding: 14px 18px;
-            border-radius: 12px;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+            padding: var(--space-3) var(--space-4);
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-md);
             color: white;
             font-size: 14px;
             font-weight: 500;
@@ -514,19 +568,19 @@
         }
 
         .toast-success {
-            background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
+            background: var(--success);
         }
 
         .toast-danger {
-            background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+            background: var(--danger);
         }
 
         .toast-warning {
-            background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+            background: var(--warning);
         }
 
         .toast-info {
-            background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+            background: var(--info);
         }
 
         .toast-icon {
@@ -622,7 +676,7 @@
     <nav class="navbar navbar-expand-lg navbar-light modern-navbar">
         <div class="container">
             <a class="navbar-brand navbar-brand-modern" href="/">
-                <img src="{% static 'apps/alijahon.png' %}" alt="Alijahon.uz">
+                <img src="{% static 'apps/marketly_logo.png' %}" alt="Marketly">
             </a>
 
             <button class="navbar-toggler navbar-toggler-modern" type="button" data-toggle="collapse"
@@ -710,7 +764,7 @@
                     <div class="row">
                         <div class="col-lg-6 d-flex align-items-center">
                             <div class="login-modal-left p-4 text-center pl-5">
-                                <img src="{% static 'apps/alijahon.png' %}" alt="Alijahon" style="width: 300px;">
+                                <img src="{% static 'apps/marketly_logo.png' %}" alt="Marketly" style="width: 300px;">
                             </div>
                         </div>
 
@@ -820,7 +874,10 @@
         <div class="container">
             <div class="copyright-content">
                 <p class="copyright-text">
-                    <a href="/">Alijahon.uz</a> © 2026 Barcha huquqlar himoyalangan
+                    <a href="/" class="footer-logo-link">
+                        <img src="{% static 'apps/marketly_logo_dark.png' %}" alt="Marketly" class="footer-logo">
+                    </a>
+                    © 2026 Barcha huquqlar himoyalangan
                 </p>
                 <div class="footer-links">
                     <a href="/">Bosh sahifa</a>

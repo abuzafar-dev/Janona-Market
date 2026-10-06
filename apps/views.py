@@ -1,10 +1,13 @@
 import uuid
 
+from django.conf import settings
+from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.core.cache import cache
+from django.core.paginator import Paginator
 from django.db import transaction
-
+from django.db.models import Count, Q
 from django.http import JsonResponse
 from django.shortcuts import redirect, render, get_object_or_404
 from django.template.defaultfilters import slugify
@@ -12,88 +15,9 @@ from django.utils.decorators import method_decorator
 from django.views import View
 
 from apps.forms import OrderForm, RegisterForm, LoginForm, WithdrawalForm
-from apps.models import User, Category, Product, District, Region, Funnel, Competition, Order, CompetitionResult, \
+from apps.models import User, Category, Product, District, Region, Funnel, Competition, Order, \
     Withdrawal, Survey
-from django.contrib import messages
-
-from django.db.models import Count, Q
-from django.core.paginator import Paginator
-from functools import wraps
-
-
-def operator_required(view_func):
-    @wraps(view_func)
-    def wrapper(request, *args, **kwargs):
-        if not request.user.is_authenticated or not request.user.is_operator:
-            messages.error(request, "Bu yerga faqat operatorlar kirava oladilar!")
-            return redirect('home')
-        return view_func(request, *args, **kwargs)
-
-    return wrapper
-from django import template
-
-register = template.Library()
-
-
-@register.filter
-def space_number(value):
-    try:
-        n = int(round(float(value)))
-    except (TypeError, ValueError):
-        return value
-    return '{:,}'.format(n).replace(',', ' ')
-
-
-@register.filter
-def format_phone(value):
-    if not value:
-        return ''
-    digits = ''.join(ch for ch in str(value) if ch.isdigit())
-    if digits.startswith('998') and len(digits) == 12:
-        return '+998 {} {} {} {}'.format(digits[3:5], digits[5:8], digits[8:10], digits[10:12])
-    return value
-
-
-@register.filter
-def initials(user):
-    if not user:
-        return ''
-    first = (user.first_name or '').strip()
-    last = (user.last_name or '').strip()
-    if first or last:
-        return (first[:1] + last[:1]).upper()
-    phone = (user.phone_number or '')
-    digits = ''.join(ch for ch in phone if ch.isdigit())
-    return digits[-2:] if digits else '??'
-
-def clean_phone_number(phone):
-    if phone:
-        return phone.replace(' ', '').replace('(', '').replace(')', '').replace('-', '')
-    return ''
-
-
-def recalculate_competition_results(competition):
-    excluded = [Order.Status.CANCELED, Order.Status.RETURNED]
-
-    leaderboard = User.objects.filter(owned_funnels__isnull=False).annotate(
-        sold_count=Count(
-            'owned_funnels__orders',
-            filter=Q(
-                owned_funnels__orders__created_at__range=(competition.start_date, competition.end_date)
-            ) & ~Q(owned_funnels__orders__status__in=excluded),
-            distinct=True,
-        )
-    ).filter(sold_count__gt=0)
-
-    for user in leaderboard:
-        CompetitionResult.objects.update_or_create(
-            competition=competition,
-            user=user,
-            defaults={
-                'display_name': f"{user.first_name} {user.last_name}".strip() or user.phone_number,
-                'sold_count': user.sold_count,
-            },
-        )
+from apps.services import apply_order_status_effects, clean_phone_number, reserve_stock
 
 
 class LoginView(View):
@@ -247,11 +171,17 @@ class ProductDetailView(View):
         form = OrderForm(request.POST)
 
         if form.is_valid():
+            quantity = form.cleaned_data['quantity']
+            if not reserve_stock(product, quantity):
+                messages.error(request, "Afsuski, ushbu mahsulotdan omborda yetarli miqdorda qolmagan.")
+                return redirect('product-detail', slug=product.slug)
+
             order = form.save(commit=False)
             order.product = product
             order.phone_number = clean_phone_number(form.cleaned_data['phone_number'])
             order.total_price = product.price * order.quantity
             order.user = request.user if request.user.is_authenticated else None
+            order.stock_deducted = True
             order.save()
             messages.success(request, "Buyurtmangiz muvaffaqiyatli qabul qilindi!")
         else:
@@ -349,6 +279,7 @@ class MarketView(View):
         product_id = request.POST.get('product_id')
         title = request.POST.get('title', '').strip()
         discount = request.POST.get('discount') or None
+        commission = request.POST.get('commission') or 0
 
         if not product_id:
             messages.error(request, "Mahsulot tanlanmagan.")
@@ -371,6 +302,7 @@ class MarketView(View):
             product=product,
             owner=request.user,
             discount_price=discount,
+            commission=commission,
         )
         messages.success(request, f"'{title}' oqimi muvaffaqiyatli yaratildi!")
         return redirect('links')
@@ -392,6 +324,11 @@ class FunnelDetailView(View):
         form = OrderForm(request.POST)
 
         if form.is_valid():
+            quantity = form.cleaned_data['quantity']
+            if not reserve_stock(product, quantity):
+                messages.error(request, "Afsuski, ushbu mahsulotdan omborda yetarli miqdorda qolmagan.")
+                return redirect('funnel-detail', funnel_id=funnel.id)
+
             order = form.save(commit=False)
             order.product = product
             order.funnel = funnel
@@ -403,6 +340,7 @@ class FunnelDetailView(View):
             order.total_price = price * order.quantity
 
             order.user = request.user if request.user.is_authenticated else None
+            order.stock_deducted = True
             order.save()
             messages.success(request, "Buyurtmangiz muvaffaqiyatli qabul qilindi!")
         else:
@@ -460,6 +398,7 @@ class LinksView(View):
         context = {
             'links': links,
             'query': query,
+            'telegram_bot_username': settings.TELEGRAM_BOT_USERNAME,
         }
         return render(request, 'links.html', context)
 
@@ -706,8 +645,10 @@ class OrderQuickStatusView(OperatorRequiredMixin, View):
             messages.error(request, "Holat noto'g'ri tanlandi.")
             return redirect('my-orders')
 
-        order.status = STATUS_MAP[ui_status]
-        order.save(update_fields=['status', 'updated_at'])
+        new_status = STATUS_MAP[ui_status]
+        apply_order_status_effects(order, new_status)
+        order.status = new_status
+        order.save()
 
         _log_survey(order, request.user, ui_status, comment)
 
@@ -769,7 +710,9 @@ class OrderDetailView(OperatorRequiredMixin, View):
                 price = max(price - order.funnel.discount_price, 0)
             order.total_price = price * quantity
 
-        order.status = STATUS_MAP[ui_status]
+        new_status = STATUS_MAP[ui_status]
+        apply_order_status_effects(order, new_status)
+        order.status = new_status
         order.save()
 
         comment = request.POST.get('comment', '').strip()
