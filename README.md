@@ -5,6 +5,36 @@ asoslangan onlayn-do'kon platformasi. Django ustida qurilgan to'liq stack ilova:
 mijozlar uchun vitrina, sotuvchilar uchun shaxsiy kabinet, operatorlar uchun
 buyurtmalarni qayta ishlash paneli va Django admin orqali boshqaruv.
 
+## Ekranlar
+
+Mijoz uchun vitrina — kategoriyalar, eng ko'p sotiladigan mahsulotlar, qidiruv.
+
+![Vitrina](docs/screenshots/01-vitrina.png)
+
+Operator paneli — yangi buyurtmalar navbati, viloyat bo'yicha filtr, qidiruv,
+buyurtmani o'zига olish va status bo'yicha harakatlantirish.
+
+![Operator paneli](docs/screenshots/10-operator.png)
+
+<table>
+  <tr>
+    <td width="50%"><img src="docs/screenshots/03-mahsulot.png" alt="Mahsulot sahifasi"><br>
+      <sub>Mahsulot sahifasi — ro'yxatdan o'tmasdan ham buyurtma berish mumkin.</sub></td>
+    <td width="50%"><img src="docs/screenshots/05-kabinet.png" alt="Sotuvchi kabineti"><br>
+      <sub>Sotuvchi kabineti.</sub></td>
+  </tr>
+  <tr>
+    <td><img src="docs/screenshots/07-havolalar.png" alt="Sotuv havolalari"><br>
+      <sub>Hamkorlik tizimi: har bir mahsulot uchun shaxsiy sotuv havolasi (funnel).</sub></td>
+    <td><img src="docs/screenshots/09-balans.png" alt="Balans"><br>
+      <sub>Balans va pul yechish so'rovlari.</sub></td>
+  </tr>
+</table>
+
+Telefonda:
+
+<img src="docs/screenshots/11-telefon.png" alt="Telefon ko'rinishi" width="300">
+
 ## Imkoniyatlar
 
 - **Mijozlar uchun** — kategoriyalar, mahsulot qidiruv/filtr, mahsulot sahifasi,
