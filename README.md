@@ -12,7 +12,7 @@ Mijoz uchun vitrina — kategoriyalar, eng ko'p sotiladigan mahsulotlar, qidiruv
 ![Vitrina](docs/screenshots/01-vitrina.png)
 
 Operator paneli — yangi buyurtmalar navbati, viloyat bo'yicha filtr, qidiruv,
-buyurtmani o'zига olish va status bo'yicha harakatlantirish.
+buyurtmani o'ziga olish va status bo'yicha harakatlantirish.
 
 ![Operator paneli](docs/screenshots/10-operator.png)
 
