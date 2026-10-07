@@ -94,7 +94,7 @@ USE_I18N = True
 USE_TZ = True
 
 TELEGRAM_BOT_TOKEN = os.environ.get('TELEGRAM_BOT_TOKEN', '')
-TELEGRAM_CHANNEL_ID = os.environ.get('TELEGRAM_CHANNEL_ID', '@alijahon_my_project')
+TELEGRAM_CHANNEL_ID = os.environ.get('TELEGRAM_CHANNEL_ID', '')
 
 STATIC_URL = '/static/'
 STATIC_ROOT = join(BASE_DIR/'static/')
