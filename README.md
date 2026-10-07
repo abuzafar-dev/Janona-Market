@@ -26,13 +26,12 @@ buyurtmalarni qayta ishlash paneli va Django admin orqali boshqaruv.
 - **Ma'lumotlar bazasi:** SQLite (dev)
 - **Frontend:** Django shablonlari, Bootstrap, vanilla CSS/JS
 - **Paket boshqaruvi:** [uv](https://github.com/astral-sh/uv)
-- **Bot (rejalashtirilgan):** aiogram (Telegram integratsiyasi uchun)
 
 ## O'rnatish
 
 ```bash
-git clone <repo-url>
-cd alijahon-my
+git clone https://github.com/abuzafar-dev/Janona-Market.git
+cd Janona-Market
 
 # muhit va bog'liqliklarni o'rnatish
 uv sync
