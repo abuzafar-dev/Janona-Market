@@ -1,3 +1,4 @@
+from django.contrib.auth.password_validation import validate_password
 from django.core.exceptions import ValidationError
 from django.forms import Form, CharField, PasswordInput, ModelForm
 
@@ -13,6 +14,11 @@ class RegisterForm(Form):
     phone_number = CharField(max_length=20, label="Telefon")
     password = CharField(widget=PasswordInput, label="Parol")
     conf_password = CharField(widget=PasswordInput, label="Parolni takrorlash")
+
+    def clean_password(self):
+        password = self.cleaned_data['password']
+        validate_password(password)  # settings.AUTH_PASSWORD_VALIDATORS
+        return password
 
     def clean(self):
         cleaned_data = super().clean()
@@ -38,7 +44,10 @@ class OrderForm(ModelForm):
 class WithdrawalForm(ModelForm):
     class Meta:
         model = Withdrawal
-        fields = ['card_number', 'amount', 'type']
+        # Faqat pul yechiladi: interfeysda tanga yechish yo'q va tanga<->so'm qoidasi
+        # belgilanmagan. Avval 'type' bu yerda bo'lgani uchun "coin" so'rovi ham
+        # main_balance'dan yechilardi, UI formasi esa (type'siz) umuman o'tmasdi.
+        fields = ['card_number', 'amount']
 
     def __init__(self, *args, user=None, **kwargs):
         self.user = user

@@ -3,6 +3,7 @@ from os.path import join
 from pathlib import Path
 
 from django.contrib import messages
+from django.core.exceptions import ImproperlyConfigured
 from dotenv import load_dotenv
 
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -10,11 +11,19 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 load_dotenv(BASE_DIR / '.env')
 
 
-SECRET_KEY = os.environ.get('SECRET_KEY', 'django-insecure-change-me-in-.env')
+_INSECURE_DEV_KEY = 'django-insecure-change-me-in-.env'
+SECRET_KEY = os.environ.get('SECRET_KEY', _INSECURE_DEV_KEY)
 
-DEBUG = os.environ.get('DEBUG', 'True') == 'True'
+# Standart holda yopiq: .env da DEBUG unutilsa, debug sahifalari ochilib qolmaydi.
+DEBUG = os.environ.get('DEBUG', 'False') == 'True'
 
-ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', '*').split(',')
+if not DEBUG and SECRET_KEY == _INSECURE_DEV_KEY:
+    raise ImproperlyConfigured(
+        "DEBUG=False, lekin SECRET_KEY berilmagan - hammaga ma'lum kalit bilan production "
+        "ishga tushirilmaydi (sessiyalarni soxtalashtirish mumkin bo'lardi)."
+    )
+
+ALLOWED_HOSTS = [h for h in os.environ.get('ALLOWED_HOSTS', 'localhost,127.0.0.1').split(',') if h]
 
 LOGIN_URL = 'home'
 
