@@ -1,12 +1,15 @@
 import uuid
 
 from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.password_validation import validate_password
+from django.core.exceptions import ValidationError
 from django.contrib.auth.decorators import login_required
 from django.core.cache import cache
 from django.db import transaction
 
 from django.http import JsonResponse
 from django.shortcuts import redirect, render, get_object_or_404
+from django.urls import reverse
 from django.template.defaultfilters import slugify
 from django.utils.decorators import method_decorator
 from django.views import View
@@ -96,6 +99,31 @@ def recalculate_competition_results(competition):
         )
 
 
+def parse_funnel_discount(raw, product):
+    """Hamkor kiritgan chegirmani tekshiradi: butun son, 0 <= chegirma < narx.
+    (value, error) qaytaradi."""
+    raw = (raw or '').strip()
+    if not raw:
+        return None, None
+    try:
+        value = int(raw)
+    except ValueError:
+        return None, "Chegirma butun son bo'lishi kerak."
+    if value < 0 or value >= product.price:
+        return None, "Chegirma 0 va mahsulot narxidan kichik bo'lishi kerak."
+    return value, None
+
+
+def order_unit_price(product, funnel):
+    """Bir dona narxi. Noto'g'ri chegirma (manfiy yoki narxdan katta/teng)
+    hisobga olinmaydi - bazada eski noto'g'ri funnel qolgan bo'lsa ham."""
+    price = product.price
+    discount = funnel.discount_price if funnel else None
+    if discount and 0 < discount < price:
+        price -= discount
+    return price
+
+
 class LoginView(View):
     def post(self, request):
         form = LoginForm(request.POST)
@@ -125,6 +153,15 @@ class LoginView(View):
     def get(self, request):
         return redirect('home')
 
+def parse_ref_id(raw):
+    """Referal ID - musbat butun son, aks holda None (noto'g'ri qiymat 500 bermaydi)."""
+    try:
+        value = int(raw)
+    except (TypeError, ValueError):
+        return None
+    return value if value > 0 else None
+
+
 class RegisterView(View):
     def post(self, request):
         form = RegisterForm(request.POST)
@@ -135,7 +172,7 @@ class RegisterView(View):
                 messages.error(request, "Bu telefon raqam allaqachon ro'yxatdan o'tgan!")
                 return redirect('home')
 
-            ref_id = request.POST.get('ref_id') or request.GET.get('id')
+            ref_id = parse_ref_id(request.POST.get('ref_id') or request.session.get('ref_id'))
             referred_by = User.objects.filter(id=ref_id).first() if ref_id else None
 
             user = User.objects.create_user(
@@ -152,6 +189,11 @@ class RegisterView(View):
         return redirect('home')
 
     def get(self, request):
+        # Referal havola (/register/?id=N): id sessiyada saqlanadi, ro'yxatdan o'tish
+        # formasi (bosh sahifadagi modal) yuborilganda o'sha yerdan olinadi.
+        ref_id = parse_ref_id(request.GET.get('id'))
+        if ref_id:
+            request.session['ref_id'] = ref_id
         return redirect('home')
 
 
@@ -181,7 +223,8 @@ class SearchProductView(View):
 
 
 class LogoutView(View):
-    def get(self, request):
+    # Faqat POST: boshqa sayt <img src="/logout/"> bilan foydalanuvchini chiqarib yubora olmaydi.
+    def post(self, request):
         logout(request)
         return redirect('home')
 
@@ -275,11 +318,24 @@ class ProfileSettingsView(View):
         user = request.user
 
         if request.POST.get('_password_change'):
-            new_password = request.POST.get('new_password')
+            current_password = request.POST.get('current_password') or ''
+            new_password = request.POST.get('new_password') or ''
             confirm_password = request.POST.get('confirm_password')
+            password_errors = []
+            if new_password:
+                try:
+                    validate_password(new_password, user)
+                except ValidationError as exc:
+                    password_errors = exc.messages
 
-            if not new_password or len(new_password) < 6:
-                messages.error(request, "Parol kamida 6 belgidan iborat bo'lishi kerak.")
+            # Joriy parol so'raladi: o'g'irlangan sessiya bilan akkauntni egallab bo'lmasin
+            if not user.check_password(current_password):
+                messages.error(request, "Joriy parol noto'g'ri.")
+            elif not new_password:
+                messages.error(request, "Yangi parolni kiriting.")
+            elif password_errors:
+                for error in password_errors:
+                    messages.error(request, error)
             elif new_password != confirm_password:
                 messages.error(request, "Parollar mos tushmadi.")
             else:
@@ -348,8 +404,6 @@ class MarketView(View):
     def post(self, request, category_slug=None):
         product_id = request.POST.get('product_id')
         title = request.POST.get('title', '').strip()
-        discount = request.POST.get('discount') or None
-
         if not product_id:
             messages.error(request, "Mahsulot tanlanmagan.")
             return redirect(request.path)
@@ -358,6 +412,11 @@ class MarketView(View):
 
         if not title:
             messages.error(request, "Oqim nomini kiriting.")
+            return redirect(request.path)
+
+        discount, discount_error = parse_funnel_discount(request.POST.get('discount'), product)
+        if discount_error:
+            messages.error(request, discount_error)
             return redirect(request.path)
 
         base_slug = slugify(title) or 'oqim'
@@ -397,10 +456,7 @@ class FunnelDetailView(View):
             order.funnel = funnel
             order.phone_number = clean_phone_number(form.cleaned_data['phone_number'])
 
-            price = product.price
-            if funnel.discount_price:
-                price = max(price - funnel.discount_price, 0)
-            order.total_price = price * order.quantity
+            order.total_price = order_unit_price(product, funnel) * order.quantity
 
             order.user = request.user if request.user.is_authenticated else None
             order.save()
@@ -527,6 +583,7 @@ class BalanceView(View):
 
                 withdrawal = form.save(commit=False)
                 withdrawal.user = user
+                withdrawal.type = Withdrawal.Type.MONEY
                 withdrawal.status = Withdrawal.Status.PENDING
                 withdrawal.save()
 
@@ -552,7 +609,7 @@ class ReferralView(View):
         referrals = paginator.get_page(page_number)
 
         context = {
-            'referral_link': request.build_absolute_uri('/register') + f'?id={request.user.id}',
+            'referral_link': request.build_absolute_uri(reverse('register')) + f'?id={request.user.id}',
             'referral_count': referrals_list.count(),
             'referrals': referrals,
         }
@@ -764,10 +821,7 @@ class OrderDetailView(OperatorRequiredMixin, View):
         order.quantity = quantity
 
         if order.product:
-            price = order.product.price
-            if order.funnel and order.funnel.discount_price:
-                price = max(price - order.funnel.discount_price, 0)
-            order.total_price = price * quantity
+            order.total_price = order_unit_price(order.product, order.funnel) * quantity
 
         order.status = STATUS_MAP[ui_status]
         order.save()

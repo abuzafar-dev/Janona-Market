@@ -734,7 +734,7 @@
                                     <span>Mening kabinetim</span>
                                 </a>
                                 <div class="dropdown-divider" style="margin: 8px 0;"></div>
-                                <a class="dropdown-item dropdown-item-modern" href="{% url 'logout' %}">
+                                <a class="dropdown-item dropdown-item-modern" href="#" onclick="document.getElementById('logout-form').submit(); return false;">
                                     <i class="icofont-logout"></i>
                                     <span>Chiqish</span>
                                 </a>
@@ -930,5 +930,6 @@
         }
     });
 </script>
+<form id="logout-form" action="{% url 'logout' %}" method="post" hidden>{% csrf_token %}</form>
 </body>
 </html>

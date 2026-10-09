@@ -216,7 +216,6 @@ dependencies = [
     { name = "django" },
     { name = "pillow" },
     { name = "python-dotenv" },
-    { name = "static" },
 ]
 
 [package.metadata]
@@ -225,7 +224,6 @@ requires-dist = [
     { name = "django", specifier = ">=6.0.7" },
     { name = "pillow", specifier = ">=12.3.0" },
     { name = "python-dotenv", specifier = ">=1.2.3" },
-    { name = "static", specifier = ">=1.1.1" },
 ]
 
 [[package]]
@@ -432,15 +430,6 @@ wheels = [
 ]
 
 [[package]]
-name = "pystache"
-version = "0.6.8"
-source = { registry = "https://pypi.org/simple" }
-sdist = { url = "https://files.pythonhosted.org/packages/85/89/0a712ca22930b8c71bced8703e5bb45669c31690ea81afe15f6cb284550c/pystache-0.6.8.tar.gz", hash = "sha256:3707518e6a4d26dd189b07c10c669b1fc17df72684617c327bd3550e7075c72c", size = 101892, upload-time = "2025-03-18T11:54:47.595Z" }
-wheels = [
-    { url = "https://files.pythonhosted.org/packages/fa/78/ffd13a516219129cef6a754a11ba2a1c0d69f1e281af4f6bca9ed5327219/pystache-0.6.8-py3-none-any.whl", hash = "sha256:7211e000974a6e06bce2d4d5cad8df03bcfffefd367209117376e4527a1c3cb8", size = 82051, upload-time = "2025-03-18T11:54:45.813Z" },
-]
-
-[[package]]
 name = "python-dotenv"
 version = "1.2.3"
 source = { registry = "https://pypi.org/simple" }
@@ -457,15 +446,6 @@ sdist = { url = "https://files.pythonhosted.org/packages/90/76/437d71068094df072
 wheels = [
     { url = "https://files.pythonhosted.org/packages/49/4b/359f28a903c13438ef59ebeee215fb25da53066db67b305c125f1c6d2a25/sqlparse-0.5.5-py3-none-any.whl", hash = "sha256:12a08b3bf3eec877c519589833aed092e2444e68240a3577e8e26148acc7b1ba", size = 46138, upload-time = "2025-12-19T07:17:46.573Z" },
 ]
-
-[[package]]
-name = "static"
-version = "1.1.1"
-source = { registry = "https://pypi.org/simple" }
-dependencies = [
-    { name = "pystache" },
-]
-sdist = { url = "https://files.pythonhosted.org/packages/63/0e/c090cf568bdd6c5871cb4d50e8d59785de8c0e58a6801e4f2b0a77f2e035/static-1.1.1.tar.gz", hash = "sha256:4a2dfc165c9242304b117e80fb200eb62742a1c51dbaac50451419dccee76395", size = 5816, upload-time = "2014-10-20T01:30:44.62Z" }
 
 [[package]]
 name = "typing-extensions"

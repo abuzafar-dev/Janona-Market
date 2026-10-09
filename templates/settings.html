@@ -299,12 +299,18 @@
                         {% csrf_token %}
                         <input type="hidden" name="_password_change" value="1">
 
+                        <div class="form-group">
+                            <label for="id_current_password">Joriy parol</label>
+                            <input type="password" name="current_password" id="id_current_password"
+                                   class="form-control" placeholder="Hozirgi parolingiz" autocomplete="current-password">
+                        </div>
+
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="id_new_password">Yangi parol</label>
                                     <input type="password" name="new_password" id="id_new_password"
-                                           class="form-control" placeholder="Yangi parol (kamida 6 belgi)">
+                                           class="form-control" placeholder="Yangi parol (kamida 8 belgi)">
                                 </div>
                             </div>
                             <div class="col-md-6">

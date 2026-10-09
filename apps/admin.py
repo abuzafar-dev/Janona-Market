@@ -1,6 +1,7 @@
 from django.contrib import admin
 from django.contrib.admin import TabularInline, ModelAdmin
 from django.contrib.auth.admin import UserAdmin
+from django.db import transaction
 from django.utils import timezone
 
 from apps.models import User, Category, Product, ProductImage, Order, District, Region, CompetitionResult, Competition, \
@@ -97,25 +98,29 @@ class WithdrawalAdmin(admin.ModelAdmin):
     readonly_fields = ('created_at',)
     actions = ['mark_completed', 'mark_rejected']
 
+    def _process(self, queryset, new_status, refund):
+        """Har bir so'rov alohida tranzaksiyada, so'rov va foydalanuvchi qatori qulflangan
+        holda: ikki admin bir vaqtda bossa ham balans ikki marta o'zgarmaydi."""
+        open_statuses = [Withdrawal.Status.PENDING, Withdrawal.Status.PROCESSING]
+        for pk in queryset.filter(status__in=open_statuses).values_list('pk', flat=True):
+            with transaction.atomic():
+                withdrawal = (Withdrawal.objects.select_for_update()
+                              .filter(pk=pk, status__in=open_statuses).first())
+                if withdrawal is None:  # boshqa admin allaqachon ko'rib chiqqan
+                    continue
+                user = User.objects.select_for_update().get(pk=withdrawal.user_id)
+                user.pending_balance -= withdrawal.amount
+                if refund:
+                    user.main_balance += withdrawal.amount
+                user.save(update_fields=['main_balance', 'pending_balance'])
+                withdrawal.status = new_status
+                withdrawal.processed_at = timezone.now()
+                withdrawal.save(update_fields=['status', 'processed_at'])
+
     def mark_completed(self, request, queryset):
-        qs = queryset.filter(status__in=[Withdrawal.Status.PENDING, Withdrawal.Status.PROCESSING])
-        for withdrawal in qs:
-            withdrawal.user.pending_balance -= withdrawal.amount
-            withdrawal.user.save(update_fields=['pending_balance'])
-            withdrawal.status = Withdrawal.Status.COMPLETED
-            withdrawal.processed_at = timezone.now()
-            withdrawal.save()
+        self._process(queryset, Withdrawal.Status.COMPLETED, refund=False)
 
     mark_completed.short_description = "Tanlanganlarni 'Bajarildi' deb belgilash"
 
     def mark_rejected(self, request, queryset):
-        qs = queryset.filter(
-            status__in=[Withdrawal.Status.PENDING, Withdrawal.Status.PROCESSING]
-        )
-        for withdrawal in qs:
-            withdrawal.user.pending_balance -= withdrawal.amount
-            withdrawal.user.main_balance += withdrawal.amount
-            withdrawal.user.save(update_fields=['main_balance', 'pending_balance'])
-            withdrawal.status = Withdrawal.Status.REJECTED
-            withdrawal.processed_at = timezone.now()
-            withdrawal.save()
+        self._process(queryset, Withdrawal.Status.REJECTED, refund=True)

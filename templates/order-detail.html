@@ -2070,7 +2070,7 @@ tr.op-no-result:hover {
     </nav>
 
     <div class="op-sidebar-foot">
-        <a href="{% url 'logout' %}" class="op-logout">
+        <a href="#" onclick="document.getElementById('logout-form').submit(); return false;" class="op-logout">
             <svg><use href="#i-logout"/></svg>
             Chiqish
         </a>
@@ -2501,9 +2501,19 @@ tr.op-no-result:hover {
         var el = document.createElement('div');
         el.className = 'op-toast is-' + type;
         el.setAttribute('role', 'status');
-        el.innerHTML = (ICONS[type] || ICONS.info)
-            + '<div>' + (options.title ? '<b>' + options.title + '</b>' : '')
-            + '<p>' + text + '</p></div>';
+        // Matn mijoz kiritgan ma'lumotni (ism) o'z ichiga oladi - faqat
+        // textContent orqali qo'yiladi, HTML sifatida hech qachon emas (XSS).
+        el.innerHTML = ICONS[type] || ICONS.info;
+        var body = document.createElement('div');
+        if (options.title) {
+            var titleEl = document.createElement('b');
+            titleEl.textContent = options.title;
+            body.appendChild(titleEl);
+        }
+        var textEl = document.createElement('p');
+        textEl.textContent = text;
+        body.appendChild(textEl);
+        el.appendChild(body);
         box.appendChild(el);
 
         var hide = function () {
@@ -3264,5 +3274,6 @@ tr.op-no-result:hover {
 })();
 </script>
 
+<form id="logout-form" action="{% url 'logout' %}" method="post" hidden>{% csrf_token %}</form>
 </body>
 </html>
